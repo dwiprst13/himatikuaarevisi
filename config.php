@@ -1,13 +1,15 @@
 <?php
+
+// inisialisasi server
 $servername = "localhost";
 $username = "root";
 $password = "";
 $dbname = "himatikdb";
 
-// Create connection
+// Membuat koneksi ke database
 $conn = new mysqli($servername, $username, $password, $dbname);
 
-// Check connection
+// Mengecek koneksi apakh berhasil atau tidak
 if ($conn->connect_error) {
     die("Connection failed: " . $conn->connect_error);
 }

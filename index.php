@@ -13,7 +13,8 @@ session_start();
 </head>
 
 <body>
-    <?php 
+    <?php
+    // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
     include "header.php";
     include "user/mainpage.php";
     include "footer.php";

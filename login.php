@@ -1,18 +1,24 @@
 <?php
+// Memanggil koneksi database 
 require "config.php";
 session_start();
+
+// Mencegah user yang sudah punya sesi login untuk mengakses halaman ini
 if (isset($_SESSION['id_user'])) {
     header("Location: index.php");
     exit;
 }
+// Fungsi untuk melakukan login user
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $auth = trim($_POST['auth']);
     $password = $_POST['password'];
+    // Mengecek apakah semua form telah diisi
     if (empty($auth) || empty($password)) {
-        echo "Both fields are required.";
+        echo "Isi semua form tersebut";
         exit;
     }
 
+    // Membuat sebuah statement
     $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
     $stmt->bind_param("sss", $auth, $auth, $auth);
     $stmt->execute();
@@ -21,11 +27,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     if ($result->num_rows === 1) {
         $user = $result->fetch_assoc();
 
-        if (password_verify($password, $user['password'])) {
+        if (password_verify($password, $user['password'])) { // Melakukan verifikasi password di db dengan form password
             session_start();
+            // Menyimpan data sesi user kedalam session
             $_SESSION['id_user'] = $user['id_user'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
+            // memastikan role user apa
             if ($user['role'] == 'admin'){
                 header("Location: admin/dashboard.php");
             } else {
@@ -33,10 +41,10 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             }
             exit;
         } else {
-            echo "Invalid password.";
+            echo "Password salah";
         }
     } else {
-        echo "No user found with the provided identifier.";
+        echo "akun dengan data tersebut tidak ditemukan";
     }
 
     $stmt->close();

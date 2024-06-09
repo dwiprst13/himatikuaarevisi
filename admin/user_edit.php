@@ -1,22 +1,38 @@
 <?php
 require '../config.php';
 include "sidebar.php";
+
+// Mengambil id_user dari url
 $id_user = $_GET['id_user'];
+
+// Mengecek apakah user mempunyai role sebagai admin
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
+    header("Location: ../index.php");
+    exit;
+}
+
+// melakukan query data user berdasarkan id_user
 $result = mysqli_query($conn, "SELECT * FROM user WHERE id_user='$id_user'");
 $row = mysqli_fetch_assoc($result);
+
+// fungsi untuk melakukan update data
 if (isset($_POST["submit"])) {
     $new_nama = $_POST['new_nama'];
     $new_username = $_POST['new_username'];
     $new_email = $_POST['new_email'];
     $new_phone = $_POST['new_phone'];
+
+    // mengecek apakah form password ada isinya atau tidak
     if (!empty($_POST['new_password'])) {
         $new_password = password_hash($_POST['new_password'], PASSWORD_DEFAULT);
     } else {
         $new_password = $row['password'];
     }
+
     $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, password=? WHERE id_user=?");
     $update_user->bind_param("ssssss", $new_nama, $new_username, $new_email, $new_phone, $new_password, $id_user);
 
+    // output 
     if ($update_user->execute()) {
         echo "<script>window.location.href = '?page=edit_user&id_user=$id_user';</script>";
     } else {

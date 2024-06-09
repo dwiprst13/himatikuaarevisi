@@ -9,13 +9,14 @@
         </nav>
         <div>
             <?php
+            // mengecek apakah ada aktivitas sesi login berdasarkan id_user
             if (!isset($_SESSION['id_user'])) {
             ?>
                 <a href="login.php">Login</a>
                 <a href="register.php">Register</a>
             <?php
             }
-            if (isset($_SESSION['id_user'])) { ?>
+            else { ?>
                 <a href="logout.php">logout</a>
             <?php
             }

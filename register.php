@@ -1,35 +1,48 @@
 <?php
+// Membuatkoneksi ke database
 require "config.php";
 session_start();
+// Mengecek apakah user memiliki role sebagai admin
 if (isset($_SESSION['id_user'])) {
     header("Location: index.php");
     exit;
 }
+// Menyimpan pesan error
 $error = [];
+
+// fungsi untuk menyimpan data
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
+    // Menginisialisasi variabel dengan value input form
     $nama = trim($_POST['nama']);
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
     $phone = trim($_POST['phone']);
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
+
+    // mengecek form yang kosong
     if (empty($nama) || empty($username) || empty($email) || empty($phone) || empty($password) || empty($repassword)) {
         $error[] = "Semua form wajib diisi";
         exit;
     }
+    // memvalidasi email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
         $error[] = "Email tidak memenuhi format";
         exit;
     }
+    // memvalidasi karakter input
     if (!preg_match("/^[0-9]{10,15}$/", $phone)) {
         $error[] = "Nomor telepon hanya bisa berupa angka.";
         exit;
     }
+    // memvalidasi kecocokan password 
     if ($password !== $repassword) {
         $error[] = "Password tidak sesuai.";
         exit;
     }
+    // hashing password untuk mengamankan pasword
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+    // membuat statement
     $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
     $stmt->bind_param("sss", $username, $email, $phone);
     $stmt->execute();

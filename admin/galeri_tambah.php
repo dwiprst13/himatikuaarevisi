@@ -8,12 +8,17 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
+// fungsi untuk memasukkan data galeri ke database
 if (isset($_POST["submit"])) {
     $judul = $_POST["judul"];
     $deskripsi = $_POST["deskripsi"];
+    // target dimana gambar akan disimpan didalam projek
     $target_dir = "../public/image/uploads/galeri/";
+    // menamai foto/file sesuai dengan nama asli
     $target_file = $target_dir . basename($_FILES["foto"]["name"]);
+    // memindahkan file kedalam ditrektori tujuan
     move_uploaded_file($_FILES["foto"]["tmp_name"], $target_file);
+    // memasukkan data kedalam tabel galeri database
     $sql = "INSERT INTO galeri (img, judul, deskripsi) VALUES ('$target_file', '$judul', '$deskripsi')";
 
     if ($conn->query($sql) === TRUE) {

@@ -42,16 +42,22 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     }
     // hashing password untuk mengamankan pasword
     $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    // membuat statement
+    // membuat statement sql
     $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
+    // binding statement
     $stmt->bind_param("sss", $username, $email, $phone);
+    // mengeksekusi statement
     $stmt->execute();
+    
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $error[] = "Username, email, or nomor telepon sudah digunakan.";
     } else {
+        // prepared statement, bingung? google apa itu prepared statement
         $stmt = $conn->prepare("INSERT INTO user (nama, username, email, phone, password) VALUES (?, ?, ?, ?, ?)");
+        // melakukan binding antara variabel dan placeholder
         $stmt->bind_param("sssss", $nama, $username, $email, $phone, $hashed_password);
+        // fungsi mengecek apakah statement sebelumnya sudah dilaksanakan
         if ($stmt->execute()) {
             $success[] = "Data Anda sudah terdaftar";
             $_SESSION['success'] = $success;

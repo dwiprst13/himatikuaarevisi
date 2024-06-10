@@ -27,8 +27,9 @@ if (isset($_POST["submit"])) {
     } else {
         $new_password = $row['password'];
     }
-
+    // prepared statement, menyiapkan statement sql
     $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, password=? WHERE id_user=?");
+    // melakuklan binding variabel dan placeholder
     $update_user->bind_param("ssssss", $new_nama, $new_username, $new_email, $new_phone, $new_password, $id_user);
 
     // output 

@@ -1,24 +1,9 @@
-<?php
-session_start();
-?>
-
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>HIMATIK UAA</title>
-    <script src="https://cdn.tailwindcss.com"></script>
-</head>
-
-<body>
-    <?php
-    // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
-    include "header.php";
-    include "user/galeripage.php";
-    include "footer.php";
-    ?>
-</body>
-
-</html>
+<section class="w-[100%] mx-auto py-10 bg-gray-900">
+    <div class="w-[95%] mx-auto md:w-[90%] p-3 md:p-5 text-center">
+        <h2 class="text-center font-bold text-[1.6rem] md:text-[2rem] lg:text-[2.5rem] text-blue-700">Galeri</h2>
+        <p class="text-gray-500 font-semibold">galeri belum tersedia</p>
+    </div>
+    <div class="mt-5 flex justify-center">
+        <button type="submit" class="block rounded-md bg-blue-600 px-3.5 py-2.5 text-center text-sm font-semibold text-white shadow-sm hover:bg-blue-700">Lihat Galeri</button>
+    </div>
+</section>

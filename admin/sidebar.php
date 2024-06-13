@@ -13,5 +13,5 @@
         <a class="w-full text-center bg-blue-600 rounded-lg p-2" href="galeri.php">Galeri</a>
         <a class="w-full text-center bg-blue-600 rounded-lg p-2" href="artikel.php">Artikel</a>
     </nav>
-    <a class="w-full text-center" href="../logout.php">logout</a>
+    <a class="w-full text-center bg-red-600 p-2 rounded-lg" href="../logout.php">logout</a>
 </aside>

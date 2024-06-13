@@ -4,5 +4,6 @@
     include "section/banner.php";
     include "section/about.php";
     include "section/galeri.php";
+    include "section/kepengurusan.php";
     ?>
 </main>

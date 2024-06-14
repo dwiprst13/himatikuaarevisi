@@ -57,9 +57,9 @@ if (isset($_POST["hapus"])) {
                             <td class="p-3 text-center px-5"><?= $row_user['phone'] ?></td>
                             <td class="p-3 text-center px-5"><?= $row_user['role'] ?></td>
                             <td class="p-3 text-center px-5">
-                                <form action="" method="get">
+                                <form action="user_edit.php" method="get">
                                     <input type="hidden" name="page" value="edit_user">
-                                    <input type="hidden" name="id_user" value="<?= $row['id_user'] ?>">
+                                    <input type="hidden" name="id_user" value="<?= $row_user['id_user'] ?>">
                                     <button type="submit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
                                 </form>
                             </td>

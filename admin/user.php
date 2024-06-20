@@ -40,8 +40,7 @@ if (isset($_POST["hapus"])) {
                         <td class="p-3 text-center px-5">Email</th>
                         <td class="p-3 text-center px-5">Nomor Telepon</th>
                         <td class="p-3 text-center px-5">Role</th>
-                        <td class="p-3 text-center px-5">Edit</th>
-                        <td class="p-3 text-center px-5">Hapus</th>
+                        <td class="p-3 text-center px-5">Aksi</th>
                     </tr>
                     <?php
                     // Melakukan query data dari tabel user
@@ -56,14 +55,12 @@ if (isset($_POST["hapus"])) {
                             <td class="p-3 text-center px-5"><?= $row_user['email'] ?></td>
                             <td class="p-3 text-center px-5"><?= $row_user['phone'] ?></td>
                             <td class="p-3 text-center px-5"><?= $row_user['role'] ?></td>
-                            <td class="p-3 text-center px-5">
+                            <td class="p-3 text-center px-5 flex justify-between">
                                 <form action="user_edit.php" method="get">
                                     <input type="hidden" name="page" value="edit_user">
                                     <input type="hidden" name="id_user" value="<?= $row_user['id_user'] ?>">
                                     <button type="submit" class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Edit</button>
                                 </form>
-                            </td>
-                            <td class="p-3 text-center px-5">
                                 <form action="" method="post" onsubmit="return confirm('Apakah kamu yakin ingin menghapus data ini?');">
                                     <input type="hidden" name="id_user" value="<?= $row['id_user'] ?>">
                                     <button type="submit" name="hapus" class="mr-3 text-sm bg-red-500 hover:bg-red-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">Hapus</button>

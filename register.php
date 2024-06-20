@@ -48,7 +48,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $stmt->bind_param("sss", $username, $email, $phone);
     // mengeksekusi statement
     $stmt->execute();
-    
+
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
         $error[] = "Username, email, or nomor telepon sudah digunakan.";
@@ -73,32 +73,54 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 ?>
 
 <!DOCTYPE html>
-<html>
-<title>Halaman Daftar</title>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Halaman Daftar</title>
+    <link href="asset/output.css" rel="stylesheet">
 </head>
 
-<body>
-    <h2>Daftar</h2>
-    <?php
-    if (!empty($error)) {
-        echo '<div>' . implode(", ", $error) . '</div>';
-    }
-    ?>
-    <form action="register.php" method="post">
-        <label for="nama">Nama:</label><br>
-        <input type="text" id="nama" name="nama"><br>
-        <label for="username">Username:</label><br>
-        <input type="text" id="username" name="username"><br>
-        <label for="email">Email:</label><br>
-        <input type="email" id="email" name="email"><br>
-        <label for="phone">Nomor HP:</label><br>
-        <input type="text" id="phone" name="phone"><br>
-        <label for="password">Password:</label><br>
-        <input type="password" id="password" name="password"><br>
-        <label for="password">Ulangi Password:</label><br>
-        <input type="password" id="repassword" name="repassword"><br>
-        <input type="submit" value="Register">
-    </form>
+<body class="bg-white md:bg-gray-100 flex items-center justify-center min-h-screen">
+    <div class="bg-white p-8 rounded-lg md:shadow-lg w-full md:w-4/6 lg:w-1/3 h-full space-y-5">
+        <h2 class="text-2xl font-bold mb-6 text-center">Daftar</h2>
+        <?php
+        if (!empty($error)) {
+            echo '<div class="bg-red-100 text-red-800 p-4 rounded mb-4">' . implode(", ", $error) . '</div>';
+        }
+        ?>
+        <form action="register.php" method="post" class="space-y-3">
+            <div>
+                <label for="nama" class="block text-sm font-medium text-gray-700">Nama:</label>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
+                <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
+                <input type="email" id="email" name="email" placeholder="Masukkan email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <label for="phone" class="block text-sm font-medium text-gray-700">Nomor HP:</label>
+                <input type="text" id="phone" name="phone" placeholder="Masukkan nomor hp" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
+                <input type="password" id="password" name="password" placeholder="Buat password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <label for="repassword" class="block text-sm font-medium text-gray-700">Ulangi Password:</label>
+                <input type="password" id="repassword" name="repassword" placeholder="Ulangi password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+            </div>
+            <div>
+                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Register</button>
+            </div>
+        </form>
+        <p>Sudah punya akun? <a class="text-blue-600" href="login.php">Masuk</a></p>
+    </div>
 </body>
 
 </html>

@@ -1,26 +1,74 @@
-<header class="flex h-20 bg-gray-900 text-white fixed top-0 left-0 w-full">
-    <div class="flex items-center justify-between w-[85%] mx-auto">
-        <h2>HIMATIK UAA</h2>
-        <nav>
-            <a href="index.php">Beranda</a>
-            <a href="galeri.php">Galeri</a>
-            <a href="artikel.php">Artikel</a>
-            <a href="kontak.php">Kontak</a>
+<header class="bg-gray-900 sticky top-0 z-50">
+    <div class="flex relative justify-between items-center h-20 w-[90%] md:w-[85%] mx-auto">
+        <div class="md:w-1/3 justify-start">
+            <h1><a class="text-white text-2xl font-bold" href="">HIMATIK UAA</a></h1>
+        </div>
+        <nav class="w-full md:w-1/3 justify-center nav-links duration-500 bg-gray-900 lg:static absolute lg:min-h-fit min-h-[60vh] left-0 top-[-800%] text-white flex items-center px-5">
+            <ul class="flex w-[85%] flex-col md:justify-center md:mx-auto lg:flex-row lg:items-center gap-5 my-10 md:my-0">
+                <li>
+                    <a class="hover:text-gray-500 flex justify-between" href="/himatikuaa/">
+                        <p>Beranda</p>
+                        <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
+                    </a>
+                </li>
+                <hr class="block md:hidden">
+                <li>
+                    <a class="hover:text-gray-500 flex justify-between" href="galeri.php">
+                        <p>Galeri</p>
+                        <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
+                    </a>
+                </li>
+                <hr class="block md:hidden">
+                <li>
+                    <a class="hover:text-gray-500 flex justify-between" href="artikel.php">
+                        <p>Artikel</p>
+                        <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
+                    </a>
+                </li>
+            </ul>
         </nav>
-        <div>
+        <div class="md:w-1/3 justify-end flex items-center gap-4 text-white">
             <?php
             // mengecek apakah ada aktivitas sesi login berdasarkan id_user
             if (!isset($_SESSION['id_user'])) {
             ?>
-                <a href="login.php">Login</a>
-                <a href="register.php">Register</a>
+                <a class="px-2 p-1 rounded-lg bg-blue-600" href="login.php">Login</a>
+                <a class="px-2 p-1 rounded-lg bg-orange-600" href="register.php">Register</a>
             <?php
-            }
-            else { ?>
-                <a href="logout.php">logout</a>
+            } else { ?>
+                <a class="px-2 p-1 rounded-lg bg-red-600" href="logout.php">logout</a>
             <?php
             }
             ?>
+            <ion-icon onclick="onToggleMenu(this)" name="menu" class="text-3xl text-white cursor-pointer lg:hidden"></ion-icon>
         </div>
-    </div>
 </header>
+<script>
+    const navLinks = document.querySelector('.nav-links')
+
+    function onToggleMenu(e) {
+        e.name = e.name === 'menu' ? 'close' : 'menu'
+        navLinks.classList.toggle('top-1')
+    }
+
+    const logoutForm = document.querySelector('.logout-form');
+    logoutForm.addEventListener('submit', function(event) {
+        if (!confirm('Apakah Anda yakin ingin logout?')) {
+            event.preventDefault();
+        }
+    });
+
+    setTimeout(() => {
+        const alertElement = document.querySelector('.alert-info');
+        alertElement.style.display = 'none';
+    }, 5000);
+
+    document.addEventListener('DOMContentLoaded', (event) => {
+        const accountBtn = document.getElementById('account-btn');
+        const accountModal = document.getElementById('account-modal');
+
+        accountBtn.addEventListener('click', () => {
+            accountModal.classList.toggle('hidden');
+        });
+    });
+</script>

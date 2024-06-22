@@ -19,10 +19,9 @@ session_start();
     <?php
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
     include "header.php";
-    include "user/section/banner.php";
-    include "user/section/about.php";
-    include "user/section/galeri.php";
-    include "user/section/kepengurusan.php";
+    ?>
+    <h1>Galeri</h1>
+    <?php
     include "footer.php";
     ?>
 </body>

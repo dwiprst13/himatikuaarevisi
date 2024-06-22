@@ -8,10 +8,10 @@
                 <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-md w-fit p-1 px-5 flex items-center shadow-xl">Profil</h3>
             </div>
             <div class="flex flex-col md:flex-row md:space-x-5">
-                <figure class="w-2/6 md:w-[40%] flex items-center justify-center">
+                <figure class="w-full md:w-2/6 flex items-center justify-center">
                     <img src="https://himatikuaa.vercel.app/foto.jpg" alt="" class="rounded-md">
                 </figure>
-                <div class=" w-4/6 text-center py-5 space-y-[1rem]">
+                <div class="w-full md:w-4/6 text-center py-5 space-y-[1rem]">
                     <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-justify">
                         <span class="text-blue-600">Kode</span> diartikan sebagai bahasa pemrograman, yang merupakan alat utama dalam pengembangan software, aplikasi dan berbagai solusi berbasis teknologi. penggunaan kata "Kode" menggambarkan fokus organisasi pada bidang pemrograman dan teknologi informatika.
                     </p>

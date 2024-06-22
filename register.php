@@ -51,7 +51,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 
     $result = $stmt->get_result();
     if ($result->num_rows > 0) {
-        $error[] = "Username, email, or nomor telepon sudah digunakan.";
+        // $error[] = "Username, email, or nomor telepon sudah digunakan.";
+        echo "Username, email, or nomor telepon sudah digunakan.";
     } else {
         // prepared statement, bingung? google apa itu prepared statement
         $stmt = $conn->prepare("INSERT INTO user (nama, username, email, phone, password) VALUES (?, ?, ?, ?, ?)");
@@ -64,7 +65,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             header("Location: login.php");
             exit;
         } else {
-            $error[] = "Failed to save data.";
+            // $error[] = "Failed to save data.";
+            echo "Error Brooooo!!!!";
         }
     }
     $stmt->close();
@@ -90,7 +92,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             echo '<div class="bg-red-100 text-red-800 p-4 rounded mb-4">' . implode(", ", $error) . '</div>';
         }
         ?>
-        <form action="register.php" method="post" class="space-y-3">
+        <form action="" method="post" class="space-y-3">
             <div>
                 <label for="nama" class="block text-sm font-medium text-gray-700">Nama:</label>
                 <input type="text" id="nama" name="nama" placeholder="Masukkan nama" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
@@ -116,7 +118,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <input type="password" id="repassword" name="repassword" placeholder="Ulangi password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
             </div>
             <div>
-                <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Register</button>
+                <button type="submit" value="POST" class="w-full flex justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Register</button>
             </div>
         </form>
         <p>Sudah punya akun? <a class="text-blue-600" href="login.php">Masuk</a></p>

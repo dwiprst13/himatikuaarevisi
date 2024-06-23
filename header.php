@@ -5,22 +5,25 @@
         </div>
         <nav class="w-full md:w-1/3 justify-center nav-links duration-500 bg-gray-900 lg:static absolute lg:min-h-fit min-h-[60vh] left-0 top-[-800%] text-white flex items-center px-5">
             <ul class="flex w-[85%] flex-col md:justify-center md:mx-auto lg:flex-row lg:items-center gap-5 my-10 md:my-0">
+                <?php
+                $current_page = basename($_SERVER['PHP_SELF']); 
+                ?>
                 <li>
-                    <a class="hover:text-gray-500 flex justify-between" href="/himatikuaa/">
+                    <a class="hover:text-gray-500 flex justify-between <?php if ($current_page == 'himatikuaa' || $current_page == 'index.php') echo 'text-blue-600'; ?>" href="/himatikuaa/">
                         <p>Beranda</p>
                         <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
                     </a>
                 </li>
                 <hr class="block md:hidden">
                 <li>
-                    <a class="hover:text-gray-500 flex justify-between" href="galeri.php">
+                    <a class="hover:text-gray-500 flex justify-between <?php if ($current_page == 'galeri.php') echo 'text-blue-600'; ?>" href="galeri.php">
                         <p>Galeri</p>
                         <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
                     </a>
                 </li>
                 <hr class="block md:hidden">
                 <li>
-                    <a class="hover:text-gray-500 flex justify-between" href="artikel.php">
+                    <a class="hover:text-gray-500 flex justify-between <?php if ($current_page == 'artikel.php') echo 'text-blue-600'; ?>" href="artikel.php">
                         <p>Artikel</p>
                         <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
                     </a>

@@ -3,7 +3,7 @@ include "config.php";
 $dataGalerry = (mysqli_query($conn, "SELECT * FROM galeri"));
 ?>
 <section class="w-[100%] mx-auto py-10 bg-gray-900">
-    <div data-aos="fade-up" data-aos-duration="1500" class="w-[95%] mx-auto md:w-[90%] p-3 md:p-5">
+    <div data-aos="fade-up" data-aos-duration="1500" class="w-[95%] mx-auto md:w-[90%] p-3 md:p-5 space-y-5">
         <h2 class="text-center font-bold text-[1.6rem] md:text-[2rem] lg:text-[2.5rem] text-blue-700">Galeri</h2>
             <p class="text-white text-center">Beberapa dokumentasi berbagai kegiatan yang telah kami adakan.</p>
             <div class="container flex flex-wrap mx-auto px-4 gap-2 py-2">
@@ -34,7 +34,7 @@ $dataGalerry = (mysqli_query($conn, "SELECT * FROM galeri"));
                 ?>
             </div>
             <div class="flex justify-center items-center my-3">
-                <button onclick="window.location.href = '/galeri';" class="bg-blue-700 text-white font-bold py-2 px-5 rounded-lg">Lihat Galeri</button>
+                <button onclick="window.location.href = 'galeri.php';" class="bg-blue-700 text-white font-bold py-2 px-5 rounded-lg">Lihat Galeri</button>
             </div>
     </div>
 </section>

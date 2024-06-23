@@ -18,12 +18,13 @@ session_start();
 <body>
     <?php
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
-    var_dump($_SESSION);
     include "header.php";
     include "user/section/banner.php";
     include "user/section/about.php";
     include "user/section/kepengurusan.php";
     include "user/section/galeri.php";
+    include "user/section/artikel.php";
+    include "user/section/kontak.php";
     include "footer.php";
     ?>
 </body>

@@ -3,7 +3,7 @@
             <h2 class="text-center font-bold text-[1.6rem] md:text-[2rem] lg:text-[2.5rem] text-blue-700">Tentang Kami</h2>
         <div class="text-white my-10 space-y-5">
             <div class="flex items-center justify-center">
-                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-md w-fit p-1 px-5 flex items-center shadow-xl">Profil</h3>
+                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-full w-fit p-1 px-5 flex items-center shadow-xl">Profil</h3>
             </div>
             <div class="flex flex-col md:flex-row md:space-x-5">
                 <figure class="w-full md:w-2/6 flex items-center justify-center">
@@ -24,7 +24,7 @@
         </div>
         <div class="text-white my-10 space-y-5">
             <div class="flex items-center justify-center">
-                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-md w-fit p-1 px-5 flex items-center shadow-xl">Sejarah</h3>
+                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-full w-fit p-1 px-5 flex items-center shadow-xl">Sejarah</h3>
             </div>
             <div class="text-center p-5 rounded-2xl">
                 <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-center">
@@ -35,7 +35,7 @@
         </div>
         <div class="text-white my-10 space-y-5">
             <div class="flex items-center justify-center">
-                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-md w-fit p-1 px-5 flex items-center shadow-xl">Visi & Misi</h3>
+                <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] bg-blue-700 rounded-full w-fit p-1 px-5 flex items-center shadow-xl">Visi & Misi</h3>
             </div>
             <div class="flex flex-col space-y-4 md:space-y-0 md:flex-row gap-5 md:gap-3">
                 <div class="w-md md:w-1/2 p-5">

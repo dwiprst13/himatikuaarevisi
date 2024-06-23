@@ -3,7 +3,7 @@ require "../config.php";
 session_start();
 
 // Mengecek apakah user mempunyai role sebagai admin
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'Admin') {
     header("Location: ../index.php");
     exit;
 }
@@ -32,10 +32,12 @@ if (isset($_POST["submit"])) {
 }
 ?>
 <main class="flex">
-    <?php
-    include "sidebar.php";
-    ?>
-    <div class="w-5/6">
+    <aside class="sticky top-0 left-0 w-1/6 h-screen bg-gray-100 shadow-lg">
+        <div class="w-full">
+            <?php include "sidebar.php"; ?>
+        </div>
+    </aside>
+    <section class="w-5/6">
         <div class="p-4 flex">
             <h1 class="text-xl">
                 Tambah Galeri
@@ -78,7 +80,7 @@ if (isset($_POST["submit"])) {
                 </div>
             </form>
         </div>
-    </div>
+        </div>
 </main>
 <script>
     function readURL(input) {

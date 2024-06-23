@@ -2,7 +2,7 @@
 require '../config.php';
 session_start();
 // Mengecek apakah user mempunyai role sebagai admin
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'Admin') {
     header("Location: ../index.php");
     exit;
 }
@@ -20,6 +20,7 @@ if (isset($_POST["submit"])) {
     $new_username = $_POST['new_username'];
     $new_email = $_POST['new_email'];
     $new_phone = $_POST['new_phone'];
+    $new_role = $_POST['new_role'];
 
     // mengecek apakah form password ada isinya atau tidak
     if (!empty($_POST['new_password'])) {
@@ -28,9 +29,9 @@ if (isset($_POST["submit"])) {
         $new_password = $row['password'];
     }
     // prepared statement, menyiapkan statement sql
-    $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, password=? WHERE id_user=?");
+    $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, role=?, password=? WHERE id_user=?");
     // melakuklan binding variabel dan placeholder
-    $update_user->bind_param("ssssss", $new_nama, $new_username, $new_email, $new_phone, $new_password, $id_user);
+    $update_user->bind_param("sssssss", $new_nama, $new_username, $new_email, $new_phone, $new_role, $new_password, $id_user);
 
     // output 
     if ($update_user->execute()) {
@@ -41,26 +42,61 @@ if (isset($_POST["submit"])) {
     $update_user->close();
 }
 ?>
-
 <main class="flex">
-    <?php
-    include "sidebar.php";
-    ?>
-    <div class="w-5/6">
-        <form action="" method="post">
-            <label for="nama">Nama:</label><br>
-            <input class="border border-black" type="text" id="new_nama" name="new_nama" value="<?php echo $row['nama']; ?>"><br>
-            <label for="username">Username:</label><br>
-            <input class="border border-black" type="text" id="new_username" name="new_username" value="<?php echo $row['username']; ?>"><br>
-            <label for="email">Email:</label><br>
-            <input class="border border-black" type="email" id="new_email" name="new_email" value="<?php echo $row['email']; ?>"><br>
-            <label for="phone">Nomor HP:</label><br>
-            <input class="border border-black" type="text" id="new_phone" name="new_phone" value="<?php echo $row['phone']; ?>"><br>
-            <label for="password">Password:</label><br>
-            <input class="border border-black" type="password" id="new_password" name="new_password"><br>
-            <label for="password">Ulangi Password:</label><br>
-            <input class="border border-black" type="password" id="new_repassword" name="new_repassword"><br>
-            <button class="border border-black" type="submit" name="submit">Submit</button>
-        </form>
-    </div>
+    <aside class="sticky top-0 left-0 w-1/6 h-screen bg-gray-100 shadow-lg">
+        <div class="w-full">
+            <?php include "sidebar.php"; ?>
+        </div>
+    </aside>
+    <section class="w-5/6">
+        <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
+            <nav class="h-16 w-[100%] flex mx-auto ">
+                <div class="place-self-center p-5">
+                    <h1 class="text-white font-bold">Edit User</h1>
+                </div>
+            </nav>
+        </header>
+        <div class="p-4">
+            <form action="" method="post" class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
+                <div class="mb-2">
+                    <label for="new_nama" class="block text-gray-700 font-bold mb-2">Nama:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="new_nama" name="new_nama" value="<?php echo $row['nama']; ?>">
+                </div>
+                <div class="mb-2">
+                    <label for="new_username" class="block text-gray-700 font-bold mb-2">Username:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="new_username" name="new_username" value="<?php echo $row['username']; ?>">
+                </div>
+                <div class="mb-2">
+                    <label for="new_email" class="block text-gray-700 font-bold mb-2">Email:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="email" id="new_email" name="new_email" value="<?php echo $row['email']; ?>">
+                </div>
+                <div class="mb-2">
+                    <label for="new_phone" class="block text-gray-700 font-bold mb-2">Nomor HP:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="new_phone" name="new_phone" value="<?php echo $row['phone']; ?>">
+                </div>
+                <div class="mb-2">
+                    <label for="new_role" class="block text-gray-700 font-bold mb-2">Role:</label>
+                    <select id="new_role" name="new_role" class="block w-full rounded-md p-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                        <option value="User" <?= $row['role'] == 'User' ? 'selected' : '' ?>>User</option>
+                        <option value="SuperAdmin" <?= $row['role'] == 'SuperAdmin' ? 'selected' : '' ?>>SuperAdmin</option>
+                        <option value="Admin" <?= $row['role'] == 'Admin' ? 'selected' : '' ?>>Admin</option>
+                        <option value="Jurnalis" <?= $row['role'] == 'Jurnalis' ? 'selected' : '' ?>>Jurnalis</option>
+                    </select>
+                </div>
+                <div class="mb-2">
+                    <label for="new_password" class="block text-gray-700 font-bold mb-2">Password:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="new_password" name="new_password">
+                </div>
+                <div class="mb-5">
+                    <label for="new_repassword" class="block text-gray-700 font-bold mb-2">Ulangi Password:</label>
+                    <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="password" id="new_repassword" name="new_repassword">
+                </div>
+                <div class="flex items-center justify-between">
+                    <button class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded focus:outline-none focus:shadow-outline" type="submit" name="submit">
+                        Submit
+                    </button>
+                </div>
+            </form>
+        </div>
+    </section>
 </main>

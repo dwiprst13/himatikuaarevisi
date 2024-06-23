@@ -67,11 +67,11 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         <form action="" method="post" class="space-y-3">
             <div>
                 <label for="auth" class="block text-sm font-medium text-gray-700">Masukkan username, email atau nomor telepon:</label>
-                <input type="text" id="auth" name="auth" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" autocomplete="off" required>
+                <input type="text" placeholder="Username, email atau nomor telepon" id="auth" name="auth" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" autocomplete="off" required>
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>
-                <input type="password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" autocomplete="off" required>
+                <input type="password" placeholder="Password" id="password" name="password" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" autocomplete="off" required>
             </div>
             <div>
                 <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Login</button>

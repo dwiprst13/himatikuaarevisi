@@ -1,18 +1,17 @@
 <?php
-// Membuatkoneksi ke database
-require "config.php";
+require "config.php"; // Pastikan file config.php berisi koneksi database Anda
 session_start();
-// Mengecek apakah user memiliki role sebagai admin
+
+// Jika user sudah login, redirect ke index.php
 if (isset($_SESSION['id_user'])) {
     header("Location: index.php");
     exit;
 }
-// Menyimpan pesan error
-$error = [];
 
-// fungsi untuk menyimpan data
+$error = [];
+$success = [];
+
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
-    // Menginisialisasi variabel dengan value input form
     $nama = trim($_POST['nama']);
     $username = trim($_POST['username']);
     $email = trim($_POST['email']);
@@ -20,59 +19,60 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $password = $_POST['password'];
     $repassword = $_POST['repassword'];
 
-    // mengecek form yang kosong
+    $_SESSION['nama'] = $_POST['nama'];
+    $_SESSION['username'] = $_POST['username'];
+    $_SESSION['email'] = $_POST['email'];
+    $_SESSION['phone'] = $_POST['phone'];
+
+    // Validasi input
     if (empty($nama) || empty($username) || empty($email) || empty($phone) || empty($password) || empty($repassword)) {
         $error[] = "Semua form wajib diisi";
-        exit;
     }
-    // memvalidasi email
     if (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
-        $error[] = "Email tidak memenuhi format";
-        exit;
+        $error[] = "Email tidak valid";
     }
-    // memvalidasi karakter input
     if (!preg_match("/^[0-9]{10,15}$/", $phone)) {
-        $error[] = "Nomor telepon hanya bisa berupa angka.";
-        exit;
+        $error[] = "Nomor telepon hanya bisa berupa angka (10-15 digit)";
     }
-    // memvalidasi kecocokan password 
     if ($password !== $repassword) {
-        $error[] = "Password tidak sesuai.";
-        exit;
+        $error[] = "Password tidak sesuai";
     }
-    // hashing password untuk mengamankan pasword
-    $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-    // membuat statement sql
-    $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
-    // binding statement
-    $stmt->bind_param("sss", $username, $email, $phone);
-    // mengeksekusi statement
-    $stmt->execute();
 
-    $result = $stmt->get_result();
-    if ($result->num_rows > 0) {
-        // $error[] = "Username, email, or nomor telepon sudah digunakan.";
-        echo "Username, email, or nomor telepon sudah digunakan.";
-    } else {
-        // prepared statement, bingung? google apa itu prepared statement
-        $stmt = $conn->prepare("INSERT INTO user (nama, username, email, phone, password) VALUES (?, ?, ?, ?, ?)");
-        // melakukan binding antara variabel dan placeholder
-        $stmt->bind_param("sssss", $nama, $username, $email, $phone, $hashed_password);
-        // fungsi mengecek apakah statement sebelumnya sudah dilaksanakan
-        if ($stmt->execute()) {
-            $success[] = "Data Anda sudah terdaftar";
-            $_SESSION['success'] = $success;
-            header("Location: login.php");
-            exit;
+    // Jika tidak ada error, lanjutkan proses registrasi
+    if (empty($error)) {
+        $hashed_password = password_hash($password, PASSWORD_DEFAULT);
+
+        // Cek apakah username, email, atau phone sudah terdaftar
+        $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
+        $stmt->bind_param("sss", $username, $email, $phone);
+        $stmt->execute();
+        $result = $stmt->get_result();
+
+        if ($result->num_rows > 0) {
+            $error[] = "Username, email, atau nomor telepon sudah digunakan";
         } else {
-            // $error[] = "Failed to save data.";
-            echo "Error Brooooo!!!!";
+            // Jika belum terdaftar, lakukan insert data ke database
+            $stmt = $conn->prepare("INSERT INTO user (nama, username, email, phone, password) VALUES (?, ?, ?, ?, ?)");
+            $stmt->bind_param("sssss", $nama, $username, $email, $phone, $hashed_password);
+
+            if ($stmt->execute()) {
+                $success[] = "Data Anda sudah terdaftar. Silakan login.";
+                unset($_SESSION['nama']);
+                unset($_SESSION['username']);
+                unset($_SESSION['email']);
+                unset($_SESSION['phone']);
+            } else {
+                $error[] = "Terjadi kesalahan saat menyimpan data. Silakan coba lagi nanti.";
+            }
         }
+        $stmt->close(); // Tutup statement setelah digunakan
     }
-    $stmt->close();
-    $conn->close();
 }
+
+// Tutup koneksi database
+$conn->close();
 ?>
+
 
 <!DOCTYPE html>
 <html lang="en">
@@ -82,32 +82,43 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Halaman Daftar</title>
     <link href="asset/output.css" rel="stylesheet">
+    <script src="https://cdn.tailwindcss.com"></script>
 </head>
 
 <body class="bg-white md:bg-gray-100 flex items-center justify-center min-h-screen">
     <div class="bg-white p-8 rounded-lg md:shadow-lg w-full md:w-4/6 lg:w-1/3 h-full space-y-5">
         <h2 class="text-2xl font-bold mb-6 text-center">Daftar</h2>
-        <?php
-        if (!empty($error)) {
-            echo '<div class="bg-red-100 text-red-800 p-4 rounded mb-4">' . implode(", ", $error) . '</div>';
-        }
-        ?>
-        <form action="" method="post" class="space-y-3">
+        <?php if (!empty($error)) : ?>
+            <div class="error bg-red-600 text-white rounded-lg p-1">
+                <?php foreach ($error as $err) : ?>
+                    <p><?php echo $err; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+
+        <?php if (!empty($success)) : ?>
+            <div class="success bg-green-600 text-white rounded-lg p-1">
+                <?php foreach ($success as $msg) : ?>
+                    <p><?php echo $msg; ?></p>
+                <?php endforeach; ?>
+            </div>
+        <?php endif; ?>
+        <form method="POST" action="<?php echo $_SERVER["PHP_SELF"]; ?>" class="space-y-3">
             <div>
                 <label for="nama" class="block text-sm font-medium text-gray-700">Nama:</label>
-                <input type="text" id="nama" name="nama" placeholder="Masukkan nama" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+                <input type="text" id="nama" name="nama" placeholder="Masukkan nama" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required value="<?php echo isset($_SESSION['nama']) ? htmlspecialchars($_SESSION['nama']) : ''; ?>">
             </div>
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-700">Username:</label>
-                <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+                <input type="text" id="username" name="username" placeholder="Masukkan nama pengguna" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required value="<?php echo isset($_SESSION['username']) ? htmlspecialchars($_SESSION['username']) : ''; ?>">
             </div>
             <div>
                 <label for="email" class="block text-sm font-medium text-gray-700">Email:</label>
-                <input type="email" id="email" name="email" placeholder="Masukkan email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+                <input type="email" id="email" name="email" placeholder="Masukkan email" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required value="<?php echo isset($_SESSION['email']) ? htmlspecialchars($_SESSION['email']) : ''; ?>">
             </div>
             <div>
                 <label for="phone" class="block text-sm font-medium text-gray-700">Nomor HP:</label>
-                <input type="text" id="phone" name="phone" placeholder="Masukkan nomor hp" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required>
+                <input type="text" id="phone" name="phone" placeholder="Masukkan nomor hp" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded shadow-sm focus:outline-none sm:text-sm" required value="<?php echo isset($_SESSION['phone']) ? htmlspecialchars($_SESSION['phone']) : ''; ?>">
             </div>
             <div>
                 <label for="password" class="block text-sm font-medium text-gray-700">Password:</label>

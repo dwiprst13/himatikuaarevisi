@@ -1,4 +1,4 @@
-    <div class="w-[100%] md:w-[90%] mx-auto flex flex-wrap justify-center my-5" id="card-container">
+    <div class="w-[100%] md:w-[90%] mx-auto flex flex-wrap justify-center my-2" id="card-container">
         <!-- Cards will be injected here by JavaScript -->
     </div>
 

@@ -5,7 +5,7 @@
     <title>HIMATIK UAA - Admin</title>
     <script src="https://cdn.tailwindcss.com"></script>
 </head>
-<aside class="w-1/6 flex flex-col bg-gray-900 text-white h-screen justify-around p-3">
+<aside class="w-full flex flex-col bg-gray-900 text-white h-screen justify-around p-3">
     <h2 class="text-center text-[1.6rem] font-bold">Himatik Admin</h2>
     <nav class="flex flex-col gap-5">
         <a class="w-full text-center bg-blue-600 rounded-lg p-2" href="dashboard.php">Dashboard</a>

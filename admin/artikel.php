@@ -6,6 +6,11 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
     exit;
 }
 
-include "sidebar.php";
 ?>
-<h1>artikel Page</h1>
+<main class="flex">
+    <aside class="sticky top-0 left-0 w-1/6 h-screen bg-gray-100 shadow-lg">
+        <div class="w-full">
+            <?php include "sidebar.php"; ?>
+        </div>
+    </aside>
+    <section class="w-5/6">

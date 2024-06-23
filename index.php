@@ -18,6 +18,7 @@ session_start();
 <body>
     <?php
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
+    var_dump($_SESSION);
     include "header.php";
     include "user/section/banner.php";
     include "user/section/about.php";

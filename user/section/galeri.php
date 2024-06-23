@@ -29,7 +29,6 @@ $dataGalerry = (mysqli_query($conn, "SELECT * FROM galeri"));
                             </figcaption>
                         </button>
                     </div>
-
                 <?php
                 }
                 ?>

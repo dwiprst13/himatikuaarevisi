@@ -20,7 +20,9 @@ session_start();
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
     include "header.php";
     ?>
-    <h1>Artikel</h1>
+    <section class="flex items-center justify-center bg-gray-900 text-white min-h-screen">
+        <h2 class="text-[2.2rem]">Coming Soon!!!</h2>
+    </section>
     <?php
     include "footer.php";
     ?>

@@ -1,11 +1,12 @@
 <?php
 require '../config.php';
 session_start();
-// Mengecek apakah user mempunyai role sebagai admin
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'Admin') {
+// Mengecek apakah user mempunyai role sebagai admin atau SuperAdmin
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin')) {
     header("Location: ../index.php");
     exit;
 }
+
 
 $error = [];
 $success = [];
@@ -41,7 +42,6 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     // Jika tidak ada error, lanjutkan proses registrasi
     if (empty($error)) {
         $hashed_password = password_hash($password, PASSWORD_DEFAULT);
-
         // Cek apakah username, email, atau phone sudah terdaftar
         $stmt = $conn->prepare("SELECT * FROM user WHERE username = ? OR email = ? OR phone = ?");
         $stmt->bind_param("sss", $username, $email, $phone);
@@ -51,10 +51,9 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
         if ($result->num_rows > 0) {
             $error[] = "Username, email, atau nomor telepon sudah digunakan";
         } else {
-            // Jika belum terdaftar, lakukan insert data ke database
+            // Jika belum terdaftar, lakukan insert data ke db
             $stmt = $conn->prepare("INSERT INTO user (nama, username, email, phone, role, password) VALUES (?, ?, ?, ?, ?, ?)");
             $stmt->bind_param("ssssss", $nama, $username, $email, $phone, $role, $hashed_password);
-
             if ($stmt->execute()) {
                 $success[] = "Data Anda sudah terdaftar. Silakan login.";
                 unset($_SESSION['nama']);

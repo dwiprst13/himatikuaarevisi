@@ -1,6 +1,11 @@
 <?php
 require "../config.php";
 session_start();
+// Mengecek apakah user mempunyai role sebagai admin atau SuperAdmin
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin')) {
+    header("Location: ../index.php");
+    exit;
+}
 
 // fungsi untuk melakukan hapus data
 if (isset($_POST["hapus"])) {

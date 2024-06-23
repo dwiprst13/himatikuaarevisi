@@ -3,7 +3,7 @@
 require "config.php";
 session_start();
 
-// Mencegah user yang sudah punya sesi login untuk mengakses halaman ini
+// Mencegah user yang sudah punya sesi login untuk mengakses halaman ini (simple auth)
 if (isset($_SESSION['id_user'])) {
     header("Location: index.php");
     exit;
@@ -34,11 +34,13 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             // memastikan role user apa
-            if ($user['role'] == 'admin') {
+            $allowedRoles = ['Admin', 'SuperAdmin'];
+            if (in_array($user['role'], $allowedRoles)) {
                 header("Location: admin/dashboard.php");
             } else {
                 header("Location: index.php");
             }
+
             exit;
         } else {
             echo "Password salah";

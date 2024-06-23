@@ -57,18 +57,4 @@
             event.preventDefault();
         }
     });
-
-    setTimeout(() => {
-        const alertElement = document.querySelector('.alert-info');
-        alertElement.style.display = 'none';
-    }, 5000);
-
-    document.addEventListener('DOMContentLoaded', (event) => {
-        const accountBtn = document.getElementById('account-btn');
-        const accountModal = document.getElementById('account-modal');
-
-        accountBtn.addEventListener('click', () => {
-            accountModal.classList.toggle('hidden');
-        });
-    });
 </script>

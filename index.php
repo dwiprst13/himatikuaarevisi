@@ -12,6 +12,7 @@ session_start();
     <link rel="stylesheet" href="asset/output.css">
     <link rel="stylesheet" href="https://demos.creative-tim.com/notus-js/assets/vendor/@fortawesome/fontawesome-free/css/all.min.css">
     <script src="https://unpkg.com/ionicons@4.5.10-0/dist/ionicons.js"></script>
+    <link rel="icon" href="public/image/logokabinet.png">
     <script src="../assets/js/script.js" defer></script>
 </head>
 

@@ -29,6 +29,7 @@
     <hr class="text-white">
     <div class="bg-gray-800 text-center p-3">
         <p class="text-white">Copyright © 2024 Himatik UAA</p>
-        <p class="text-white">Kelompok 3 Nih Bosss</p>
+        <p class="text-white">Tutor ada di kelompok 3 nih bosss!!!</p>
+        <p class="text-white">Code availabe at <a class="text-blue-600" target="_blank" href="https://github.com/dwiprst13/himatikuaarevisi">DwiPrast13's Github</a></p>
     </div>
 </footer>

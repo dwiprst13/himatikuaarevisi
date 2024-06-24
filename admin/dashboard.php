@@ -3,10 +3,11 @@ session_start();
 require "../config.php";
 
 // Mengecek apakah user mempunyai role sebagai admin atau SuperAdmin
-if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin')) {
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin' && $_SESSION['role'] !== 'Jurnalis')) {
     header("Location: ../index.php");
     exit;
 }
+
 
 $user = "SELECT COUNT(*) AS jumlah_user FROM user";
 $result_user = $conn->query($user);
@@ -53,23 +54,25 @@ $role = $_SESSION['role'];
         <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
             <nav class="h-16 w-[100%] flex mx-auto ">
                 <div class="place-self-center p-5">
-                    <h1 class="text-white font-bold">User</h1>
+                    <h1 class="text-white font-bold">Dashboard</h1>
                 </div>
             </nav>
         </header>
         <div class="p-5">
             <h2 class="text-[1.9rem] font-bold">Selamat Datang, <span class="text-blue-600"><?= $nama; ?></span> </h2>
-            <p>Anda sekarang masuk sebagai <span class="text-red-600"><?= $role; ?></span>, Anda bisa mengontrol seluruh akses seluruh web ini</p>
+            <p>Anda sekarang masuk sebagai <span class="text-red-600"><?= $role; ?></span></p>
             <p class="my-5 text-[1.3rem] font-bold">Menu</p>
             <div class="flex space-x-5">
-                <a href="user.php" class="h-32 w-48 bg-blue-500 rounded-lg p-5 text-white text-center">
-                    <p class="">User</p>
-                    <p class="text-[3rem] font-bold">
-                        <?=
-                        $jumlah_user;
-                        ?>
-                    </p>
-                </a>
+                <?php if ($role == 'SuperAdmin' || $role == 'Admin') : ?>
+                    <a href="user.php" class="h-32 w-48 bg-blue-500 rounded-lg p-5 text-white text-center">
+                        <p class="">User</p>
+                        <p class="text-[3rem] font-bold">
+                            <?=
+                            $jumlah_user;
+                            ?>
+                        </p>
+                    </a>
+                <?php endif; ?>
                 <a href="galeri.php" class="h-32 w-48 bg-orange-500 rounded-lg p-5 text-white text-center">
                     <p class="">Galeri</p>
                     <p class="text-[3rem] font-bold">

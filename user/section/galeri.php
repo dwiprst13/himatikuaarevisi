@@ -1,19 +1,21 @@
 <?php
 include "config.php";
-$dataGalerry = (mysqli_query($conn, "SELECT * FROM galeri"));
+$sql = "SELECT * FROM galeri ORDER BY id_galeri DESC LIMIT 4";
+$dataGalerry = $conn->query($sql);
+
 ?>
 <section class="w-[100%] mx-auto py-10 bg-gray-900">
     <div data-aos="fade-up" data-aos-duration="1500" class="w-[95%] mx-auto md:w-[90%] p-3 md:p-5 space-y-5">
         <h2 class="text-center font-bold text-[1.6rem] md:text-[2rem] lg:text-[2.5rem] text-blue-700">Galeri</h2>
         <p class="text-white text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-center">Beberapa dokumentasi berbagai kegiatan yang telah kami adakan.</p>
-        <div class="container flex flex-wrap mx-auto px-4 gap-2 py-2">
+        <div class="container flex flex-wrap mx-auto px-4 py-2 justify-center">
             <?php
             while ($galeri = mysqli_fetch_assoc($dataGalerry)) {
                 $pathgambar = $galeri['img'];
                 $gambar = str_replace('../', '', $pathgambar);
             ?>
                 <div class="w-full sm:w-1/2 md:w-1/3 xl:w-1/4 p-2">
-                    <button class="relative bg-white rounded-lg p-1 overflow-hidden group w-full">
+                    <button class="relative bg-white rounded-lg p-1 overflow-hidden group w-full" onclick="openModal('<?= $gambar ?>', '<?= $galeri['judul'] ?>', '<?= $galeri['deskripsi'] ?>')">
                         <div class="bg-black w-full flex justify-center items-center overflow-hidden">
                             <img src="<?= $gambar ?>" alt="" class="object-cover aspect-w-6 aspect-h-4 min-h-48">
                         </div>
@@ -37,4 +39,34 @@ $dataGalerry = (mysqli_query($conn, "SELECT * FROM galeri"));
             <button onclick="window.location.href = 'galeri.php';" class="bg-blue-700 text-white font-bold py-2 px-5 rounded-lg">Lihat Galeri</button>
         </div>
     </div>
+    <!-- <div>
+        <div id="imageModal" class="fixed inset-0 z-50 hidden">
+            <div class="fixed inset-0 bg-red-600 bg-opacity-50"></div>
+            <div class="flex items-center justify-center h-screen">
+                <div class="bg-white rounded-lg p-4 max-w-3xl relative h-[80vh] ">
+                    <button class="absolute top-2 right-2 text-gray-500 hover:text-gray-800" onclick="closeModal()">
+                        <p>X</p>
+                    </button>
+                    <div cs="mx-auto w-full h-full">
+                        <img id="modalImage" src="" alt="" class="mx-auto w-full h-[85%] object-cover">
+                        <div id="modalCaption" class="mt-2 text-center h-[15%]"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div> -->
 </section>
+<script>
+    function openModal(imageSrc, title, description) {
+        document.getElementById('modalImage').src = imageSrc;
+        document.getElementById('modalCaption').innerHTML = `
+        <h1 class="text-lg font-bold">${title}</h1>
+        <p class="text-sm">${description}</p>
+    `;
+        document.getElementById('imageModal').classList.remove('hidden');
+    }
+
+    function closeModal() {
+        document.getElementById('imageModal').classList.add('hidden');
+    }
+</script>

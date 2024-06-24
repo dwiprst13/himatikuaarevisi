@@ -3,11 +3,10 @@ require "../config.php";
 session_start();
 
 // Mengecek apakah user mempunyai role sebagai admin atau SuperAdmin
-if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin')) {
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin' && $_SESSION['role'] !== 'Jurnalis')) {
     header("Location: ../index.php");
     exit;
 }
-
 
 // fungsi untuk memasukkan data galeri ke database
 if (isset($_POST["submit"])) {
@@ -39,6 +38,13 @@ if (isset($_POST["submit"])) {
         </div>
     </aside>
     <section class="w-5/6">
+        <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
+            <nav class="h-16 w-[100%] flex mx-auto ">
+                <div class="place-self-center p-5">
+                    <h1 class="text-white font-bold">Galeri</h1>
+                </div>
+            </nav>
+        </header>
         <div class="p-4 flex">
             <h1 class="text-xl">
                 Tambah Galeri
@@ -46,7 +52,7 @@ if (isset($_POST["submit"])) {
         </div>
         <div class=" px-3 py-4 justify-between">
             <button class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
-                <a href="?page=galeri">Kembali</a>
+                <a href="galeri.php">Kembali</a>
             </button>
         </div>
         <div class="sm:mx-auto sm:w-full">

@@ -80,9 +80,9 @@ $conn->close();
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Daftar</title>
     <link href="asset/output.css" rel="stylesheet">
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="icon" href="public/image/logokabinet.png">
+    <title>Daftar - HIMATIK UAA</title>
 </head>
 
 <body class="bg-white md:bg-gray-100 flex items-center justify-center min-h-screen">

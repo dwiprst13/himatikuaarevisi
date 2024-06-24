@@ -35,7 +35,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             // memastikan role user apa
-            $allowedRoles = ['Admin', 'SuperAdmin'];
+            $allowedRoles = ['Admin', 'SuperAdmin', 'Jurnalis'];
             if (in_array($user['role'], $allowedRoles)) {
                 header("Location: admin/dashboard.php");
             } else {
@@ -60,7 +60,8 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Halaman Login</title>
+    <link rel="icon" href="public/image/logokabinet.png">
+    <title>Login - HIMATIK UAA</title>
     <link href="asset/output.css" rel="stylesheet">
 </head>
 
@@ -80,7 +81,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
                 <button type="submit" class="w-full flex justify-center py-2 px-4 border border-transparent rounded shadow-sm text-sm font-medium text-white bg-blue-600 hover:bg-blue-700 focus:outline-none">Login</button>
             </div>
         </form>
-        <p>BVelum punya akun? <a class="text-blue-600" href="register.php">Daftar</a></p>
+        <p>Belum punya akun? <a class="text-blue-600" href="register.php">Daftar</a></p>
     </div>
 </body>
 

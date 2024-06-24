@@ -7,7 +7,11 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION[
     exit;
 }
 
-
+if (!isset($_SESSION['role']) || $_SESSION['role'] !== 'SuperAdmin') {
+    $displayForm = 'style="display:none;"';
+} else {
+    $displayForm = '';
+}
 // Mengambil id_user dari url
 $id_user = $_GET['id_user'];
 
@@ -30,17 +34,35 @@ if (isset($_POST["submit"])) {
         $new_password = $row['password'];
     }
     // prepared statement, menyiapkan statement sql
-    $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, role=?, password=? WHERE id_user=?");
+    // $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, role=?, password=? WHERE id_user=?");
     // melakuklan binding variabel dan placeholder
-    $update_user->bind_param("sssssss", $new_nama, $new_username, $new_email, $new_phone, $new_role, $new_password, $id_user);
+    // $update_user->bind_param("sssssss", $new_nama, $new_username, $new_email, $new_phone, $new_role, $new_password, $id_user);
+
+    if ($_SESSION['role'] === 'SuperAdmin') {
+        // Jika SuperAdmin, gunakan query update dengan role
+        $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, role=?, password=? WHERE id_user=?");
+        $update_user->bind_param("sssssss", $new_nama, $new_username, $new_email, $new_phone, $new_role, $new_password, $id_user);
+    } else {
+        // Jika bukan SuperAdmin, gunakan query update tanpa role
+        $update_user = $conn->prepare("UPDATE user SET nama=?, username=?, email=?, phone=?, password=? WHERE id_user=?");
+        $update_user->bind_param("sssssi", $new_nama, $new_username, $new_email, $new_phone, $new_password, $id_user);
+    }
 
     // output 
     if ($update_user->execute()) {
-        echo "<script>window.location.href = '?page=edit_user&id_user=$id_user';</script>";
+        $_SESSION['update_success'] = true;
+        header("Location: user_edit.php?id_user=$id_user");
+        exit;
     } else {
         echo "Error updating user: " . $conn->error;
     }
     $update_user->close();
+}
+$update_success = false;
+if (isset($_SESSION['update_success']) && $_SESSION['update_success']) {
+    $update_success = true;
+    // Unset the session flag to avoid showing the alert again on refresh
+    unset($_SESSION['update_success']);
 }
 ?>
 <main class="flex">
@@ -53,14 +75,21 @@ if (isset($_POST["submit"])) {
         <header class="bg-gray-900 w-[100%] sticky left-0 top-0">
             <nav class="h-16 w-[100%] flex mx-auto ">
                 <div class="place-self-center p-5">
-                    <h1 class="text-white font-bold">Edit User</h1>
+                    <h1 class="text-white font-bold">User</h1>
                 </div>
             </nav>
         </header>
+        <div class="p-4 flex">
+            <h1 class="text-xl">
+                Edit User
+            </h1>
+        </div>
+        <div class=" px-3 py-4 justify-between">
+            <button class="mr-3 text-sm bg-blue-500 hover:bg-blue-700 text-white py-1 px-2 rounded focus:outline-none focus:shadow-outline">
+                <a href="user.php">Kembali</a>
+            </button>
+        </div>
         <div class="p-4">
-            <div class="flex justify-between w-[95%] mx-auto items-center py-10">
-                <h3 class="text-[1.5rem]">Edit User</h3>
-            </div>
             <form action="" method="post" class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
                 <div class="mb-2">
                     <label for="new_nama" class="block text-gray-700 font-bold mb-2">Nama:</label>
@@ -78,7 +107,7 @@ if (isset($_POST["submit"])) {
                     <label for="new_phone" class="block text-gray-700 font-bold mb-2">Nomor HP:</label>
                     <input class="shadow border rounded w-full py-2 px-3 text-gray-700 leading-tight focus:outline-none focus:shadow-outline" type="text" id="new_phone" name="new_phone" value="<?php echo $row['phone']; ?>">
                 </div>
-                <div class="mb-2">
+                <div class="mb-2" <?php echo $displayForm; ?>>
                     <label for="new_role" class="block text-gray-700 font-bold mb-2">Role:</label>
                     <select id="new_role" name="new_role" class="block w-full rounded-md p-2 border-0 py-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                         <option value="User" <?= $row['role'] == 'User' ? 'selected' : '' ?>>User</option>
@@ -104,3 +133,10 @@ if (isset($_POST["submit"])) {
         </div>
     </section>
 </main>
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        <?php if ($update_success) : ?>
+            alert('Data berhasil diupdate!');
+        <?php endif; ?>
+    });
+</script>

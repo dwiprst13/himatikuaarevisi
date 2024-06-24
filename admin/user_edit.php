@@ -58,6 +58,9 @@ if (isset($_POST["submit"])) {
             </nav>
         </header>
         <div class="p-4">
+            <div class="flex justify-between w-[95%] mx-auto items-center py-10">
+                <h3 class="text-[1.5rem]">Edit User</h3>
+            </div>
             <form action="" method="post" class="bg-white p-4 rounded-lg shadow-md border border-gray-200">
                 <div class="mb-2">
                     <label for="new_nama" class="block text-gray-700 font-bold mb-2">Nama:</label>

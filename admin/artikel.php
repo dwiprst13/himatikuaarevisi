@@ -1,7 +1,7 @@
 <?php
 session_start();
 // Mengecek apakah user mempunyai role sebagai admin
-if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
+if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION['role'] !== 'SuperAdmin')) {
     header("Location: ../index.php");
     exit;
 }
@@ -13,4 +13,7 @@ if (!isset($_SESSION['id_user']) || $_SESSION['role'] !== 'admin') {
             <?php include "sidebar.php"; ?>
         </div>
     </aside>
-    <section class="w-5/6">
+    <section class="w-5/6 flex items-center justify-center">
+        On Process
+    </section>
+</main>

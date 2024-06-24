@@ -29,6 +29,6 @@
     <hr class="text-white">
     <div class="bg-gray-800 text-center p-3">
         <p class="text-white">Copyright © 2024 Himatik UAA</p>
-        <p class="text-white">Designed by <a href="https://www.instagram.com/prastttt13/" target="_blank"><span class="text-blue-600">Dwi Prasetia</span></a></p>
+        <p class="text-white">Kelompok 3 Nih Bosss</p>
     </div>
 </footer>

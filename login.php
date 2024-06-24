@@ -31,6 +31,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             session_start();
             // Menyimpan data sesi user kedalam session
             $_SESSION['id_user'] = $user['id_user'];
+            $_SESSION['nama'] = $user['nama'];
             $_SESSION['username'] = $user['username'];
             $_SESSION['role'] = $user['role'];
             // memastikan role user apa

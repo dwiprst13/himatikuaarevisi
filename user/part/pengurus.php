@@ -37,12 +37,56 @@
         </div>
     </div>
     <div class="w-[90%] md:w-[85%] mx-auto flex flex-wrap justify-center">
+        <div id="tugasContainer">
+        </div>
         <div class="w-[100%] md:w-[90%] mx-auto flex flex-wrap justify-center my-2" id="card-pengurus">
             <!-- Cards will be injected here by JavaScript -->
         </div>
     </div>
 
     <script>
+        const tugasDivisi = [{
+                divisi: "BPH",
+                tugas: "BPH Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "Kominfo",
+                tugas: "Kominfo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "Diklat",
+                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "Sosmas",
+                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "PSDA",
+                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "Ekonomi",
+                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+            {
+                divisi: "Agama",
+                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+            },
+        ];
+
+        const tugasContainer = document.getElementById('tugasContainer');
+
+        // Fungsi untuk menampilkan tugas
+        function displayTugas(divisiData) {
+            tugasContainer.innerHTML = '';
+            const tugasElement = document.createElement('p');
+            tugasElement.classList.add('text-[1rem]', 'md:text-[1.1rem]', 'lg:text-[1.2rem]', 'text-center');
+            tugasElement.textContent = divisiData.tugas;
+            tugasContainer.appendChild(tugasElement);
+        }
+        displayTugas(tugasDivisi[0]);
+
         const daftarPengurus = [{
                 name: "Ratnasari",
                 posisi: "Sekretaris 1",
@@ -411,13 +455,14 @@
             filterData('BPH', document.getElementById('bphButton'));
         });
 
+        // Menampilkan data pengurus berdasarkan dari button divisi
         function filterData(divisi, button) {
             document.querySelectorAll('#card-pengurus button').forEach(btn => btn.classList.remove('active'));
             const filteredPengurus = daftarPengurus.filter(pengurus => pengurus.divisi === divisi);
             cardContainerPengurus.innerHTML = '';
             filteredPengurus.forEach(pengurus => {
                 const cardPengurus = document.createElement('div');
-                cardPengurus.classList.add('w-[50%]', 'md:w-[33.3333%]', 'lg:w-[25%]', 'py-[1rem]', 'md:py-[2rem]', 'p-2', 'my-3', 'flex', 'flex-col'); 
+                cardPengurus.classList.add('w-[50%]', 'md:w-[33.3333%]', 'lg:w-[25%]', 'py-[1rem]', 'md:py-[2rem]', 'p-2', 'my-3', 'flex', 'flex-col');
                 // Memasukkan html ke dalam cardPengurus
                 cardPengurus.innerHTML = `
                     <div class="relative flex justify-center">
@@ -439,6 +484,18 @@
                     `;
                 cardContainerPengurus.appendChild(cardPengurus);
             });
+
+            // Menampilkan Tugas dari masing masing divisi
+            document.querySelectorAll('[onclick^="filterData"]').forEach(btn => btn.classList.remove('active-button'));
+            button.classList.add('active-button');
+            const filteredTugas = tugasDivisi.find(item => item.divisi === divisi);
+            if (filteredTugas) {
+                displayTugas(filteredTugas);
+            } else {
+                tugasContainer.innerHTML = '<p>Tugas tidak ditemukan untuk divisi ini.</p>';
+            }
+
+            // Membuat warna pada button
             document.querySelectorAll('#card-pengurus button').forEach(btn => btn.classList.remove('active'));
             // Reset warna semua tombol menjadi abu-abu
             var buttons = document.querySelectorAll('.default-style');

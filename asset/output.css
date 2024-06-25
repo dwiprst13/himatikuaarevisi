@@ -804,6 +804,10 @@ video {
   height: 100vh;
 }
 
+.max-h-96 {
+  max-height: 24rem;
+}
+
 .min-h-48 {
   min-height: 12rem;
 }
@@ -1155,6 +1159,11 @@ video {
 .bg-orange-600 {
   --tw-bg-opacity: 1;
   background-color: rgb(234 88 12 / var(--tw-bg-opacity));
+}
+
+.bg-red-200 {
+  --tw-bg-opacity: 1;
+  background-color: rgb(254 202 202 / var(--tw-bg-opacity));
 }
 
 .bg-red-500 {
@@ -1863,6 +1872,10 @@ video {
 
   .md\:w-\[90\%\] {
     width: 90%;
+  }
+
+  .md\:w-\[50\%\] {
+    width: 50%;
   }
 
   .md\:flex-row {

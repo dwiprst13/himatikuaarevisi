@@ -7,7 +7,7 @@
             </div>
             <div class="flex flex-col md:flex-row md:space-x-5">
                 <figure class="w-full md:w-2/6 flex items-center justify-center">
-                    <img src="https://himatikuaa.vercel.app/foto.jpg" alt="" class="rounded-md">
+                    <img src="public/image/pengurus.jpg" alt="" class="rounded-md">
                 </figure>
                 <div class="w-full md:w-4/6 text-center py-5 space-y-[1rem]">
                     <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-justify">

@@ -11,8 +11,8 @@
                 <p class="text-center">Bosen sama muka muka mereka?</p>
             </div>
             <div class="w-full flex items-center justify-center">
-                <button class="btn-open-pengurus-card p-2 rounded-full bg-blue-600 my-5">Kenali Kami Yuk</button>
-                <button class="btn-close-pengurus-card p-2 rounded-full bg-red-600 mt-5">Klik disini</button>
+                <button class="btn-open-pengurus-card p-2 rounded-full bg-blue-600 hover:bg-blue-700 my-5">Kenali Kami Yuk</button>
+                <button class="btn-close-pengurus-card p-2 rounded-full bg-red-600 hover:bg-red-700 mt-5">Klik disini</button>
             </div>
         </div>
     </div>

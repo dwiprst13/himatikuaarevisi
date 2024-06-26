@@ -37,6 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
             // memastikan role user apa
             $allowedRoles = ['Admin', 'SuperAdmin', 'Jurnalis'];
             if (in_array($user['role'], $allowedRoles)) {
+                $_SESSION['show_popup'] = true; 
                 header("Location: admin/dashboard.php");
             } else {
                 header("Location: index.php");

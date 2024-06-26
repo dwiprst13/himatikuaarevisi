@@ -1,6 +1,12 @@
 <?php
 session_start();
 include "config.php";
+$id_artikel = $_GET['id_artikel'];
+
+$dataArtikel = mysqli_query($conn, "SELECT * FROM artikel WHERE id_artikel='$id_artikel'");
+$artikel = mysqli_fetch_assoc($dataArtikel);
+
+$queryKomentar = mysqli_query($conn, "SELECT * FROM komentar WHERE id_artikel = '$id_artikel'");
 ?>
 
 <!DOCTYPE html>
@@ -23,22 +29,22 @@ include "config.php";
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
     include "header.php";
     ?>
-    <section class="flex items-center justify-center bg-gray-900 text-white min-h-screen">
-        <h2 class="text-[2.2rem]">
-            <?php
-            $queryartikel = mysqli_query($conn, "SELECT * FROM artikel");
-
-            while ($row_artikel = mysqli_fetch_assoc($queryartikel)) {
-            ?>
-                <a href="artikel_detail.php?id_artikel=<?= $row_artikel['id_artikel'] ?>">
-                    <p><?= $row_artikel['judul']; ?></p>
-                    <p><?= $row_artikel['content']; ?></p>
-                </a>
-            <?php
-            }
-            ?>
-
-        </h2>
+    <section class="flex bg-gray-900 text-white min-h-screen">
+        <div class="fle">
+            <h3><?= $artikel['judul']; ?></h3><br>
+            <p><?= $artikel['content']; ?></p>
+            <p><?= $artikel['date']; ?></p>
+            <div>
+                <h3>Komentar</h3>
+                <?php
+                while ($row_komentar = mysqli_fetch_assoc($queryKomentar)) {
+                ?>
+                    <p><?= $row_komentar['komentar']; ?></p>
+                <?php
+                }
+                ?>
+            </div>
+        </div>
     </section>
     <?php
     include "footer.php";

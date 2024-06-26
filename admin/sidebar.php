@@ -20,6 +20,7 @@ $role = $_SESSION['role']; // Mengambil peran dari session
         <?php endif; ?>
         <a class="w-full text-center rounded-lg p-2 <?php echo (strpos($current_page, 'galeri') !== false ? 'bg-blue-600' : 'bg-gray-500'); ?>" href="galeri.php">Galeri</a>
         <a class="w-full text-center rounded-lg p-2 <?php echo (strpos($current_page, 'artikel') !== false ? 'bg-blue-600' : 'bg-gray-500'); ?>" href="artikel.php">Artikel</a>
+        <a class="w-full text-center rounded-lg p-2 <?php echo (strpos($current_page, 'komentar') !== false ? 'bg-blue-600' : 'bg-gray-500'); ?>" href="komentar.php">Komentar</a>
     </nav>
 
 

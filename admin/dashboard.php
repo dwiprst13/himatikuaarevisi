@@ -8,13 +8,15 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION[
     exit;
 }
 
-
+// Menghitung jumlah user
 $user = "SELECT COUNT(*) AS jumlah_user FROM user";
 $result_user = $conn->query($user);
 
+// Menghitung jumlah galeri
 $galeri = "SELECT COUNT(*) AS jumlah_galeri FROM galeri";
 $result_galeri = $conn->query($galeri);
 
+// Menghitung jumlah artikel
 $artikel = "SELECT COUNT(*) AS jumlah_artikel FROM artikel";
 $result_artikel = $conn->query($artikel);
 
@@ -83,6 +85,14 @@ $role = $_SESSION['role'];
                 </a>
                 <a href="artikel.php" class="h-32 w-48 bg-green-500 rounded-lg p-5 text-white text-center">
                     <p class="">Artikel</p>
+                    <p class="text-[3rem] font-bold">
+                        <?=
+                        $jumlah_artikel;
+                        ?>
+                    </p>
+                </a>
+                <a href="komentar.php" class="h-32 w-48 bg-cyan-500 rounded-lg p-5 text-white text-center">
+                    <p class="">Komentar</p>
                     <p class="text-[3rem] font-bold">
                         <?=
                         $jumlah_artikel;

@@ -37,7 +37,13 @@
         </div>
     </div>
     <div class="w-[90%] md:w-[85%] mx-auto flex flex-wrap justify-center">
-        <div id="tugasContainer">
+        <div class="relative bg-[#072748] rounded-lg flex p-5 py-8 text-white">
+            <div id="tugasContainer" class="">
+
+            </div>
+            <div class="absolute right-2 top-2 text-white">
+                <i class="fa fa-info-circle" aria-hidden="true"></i>
+            </div>
         </div>
         <div class="w-[100%] md:w-[90%] mx-auto flex flex-wrap justify-center my-2" id="card-pengurus">
             <!-- Cards will be injected here by JavaScript -->
@@ -47,31 +53,31 @@
     <script>
         const tugasDivisi = [{
                 divisi: "BPH",
-                tugas: "BPH Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bertanggung jawab penuh atas segala kegiatan keorganisasian, mengawasi dan melakukan koordinasi dengan divisi-divisi untuk menjalankan program di dalam kepengurusan HIMATIK."
             },
             {
                 divisi: "Kominfo",
-                tugas: "Kominfo Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bertanggung jawab dalam dalam mengelola penyebaran informasi dan komunikasi diantara anggota serta pihak eksternal(diluar hima), memastikan informasi kegiatan dan program HIMATIK tersampaikan dengan baik melalui sosmed2 yang kami miliki .Kami juga bertanggungjawab dalam mengelola dokumentasi dan publikasi segala kegiatan HIMATIK untuk memperluas koneksi dan meningkatkan citra HIMATIK."
             },
             {
                 divisi: "Diklat",
-                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Merupakan pusat pengembangan diri yang bergerak dalam peningkatan kualitas sumber daya manusia dengan menyediakan seminar, lokakarya, dan pelatihan praktis untuk meningkatkan keterampilan dan wawasan serta mewadahi anggota-anggotanya dalam proses pembelajaran (pendidikan dan latihan) pada umumnya dalam bidang teknologi informasi."
             },
             {
                 divisi: "Sosmas",
-                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bertanggung jawab mengorganisir dan melaksanakan kegiatan sosial yang bermanfaat bagi masyarakat. Mereka menginisiasi berbagai kegiatan seperti bakti sosial, donor darah, dan kunjungan ke panti asuhan atau panti jompo. Divisi ini berperan penting dalam membangun hubungan baik antara mahasiswa dan masyarakat sekitar, serta menumbuhkan kesadaran sosial di kalangan mahasiswa."
             },
             {
                 divisi: "PSDA",
-                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bertanggung jawab untuk mengembangkan minat dan bakat anggota Informatika. Divisi PSDA juga bertanggung jawab untuk Menciptakan Ekosistem Sistem Informasi Menjadi lebih baik dengan memperhatikan bakat-bakat yang hadir di Informatika serta memperkuat potensi individu di dalam Himpunan Mahasiswa."
             },
             {
                 divisi: "Ekonomi",
-                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bergerak di bidang kewirausahaan sebagai implementasi kegiatan yang menghasilkan sumber dana himpunan, dengan menjalin hubungan internal dan eksternal serta berperan dalam pemasukan dana himpunan, yang berhubungan dengan pihak internal maupun eksternal."
             },
             {
                 divisi: "Agama",
-                tugas: "Lorem ipsum dolor sit amet consectetur, adipisicing elit. Quo illo laboriosam aliquam earum impedit eius asperiores facere atque eveniet, a pariatur recusandae sapiente autem aliquid."
+                tugas: "Bertanggung jawab mengembangkan nilai-nilai keagamaan di kalangan mahasiswa melalui kegiatan keagamaan dan perayaan hari besar agama. Mereka juga memberikan bimbingan rohani dan menciptakan suasana yang kondusif untuk praktik keagamaan, membantu membentuk karakter moral dan integritas mahasiswa informatika Alma Ata."
             },
         ];
 
@@ -124,7 +130,7 @@
                 github: "#"
             },
             {
-                name: "Salma Mesias GWk",
+                name: "Salma Mesias G W K",
                 posisi: "Koordinator",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Salma.jpg",

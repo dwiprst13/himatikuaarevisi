@@ -34,17 +34,16 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION[
 
             if ($jumlahData > 0) {
             ?>
-                <div class="container flex-nowrap w-[90%] gap-5 columns-3 mx-auto grid px-4 lg:grid-cols-12">
+                <div class="container flex-nowrap gap-5 columns-3 mx-auto grid px-4 lg:grid-cols-12">
                     <?php
                     // Jika ada data galeri, tampilkan galeri
                     while ($galeri = mysqli_fetch_assoc($dataGalerry)) {
                     ?>
                         <form action="galeri_edit.php" method="get" class="justify-center p-2 text-gray-900 md:col-span-3 lg:col-span-3 rounded-lg bg-gray-400">
                             <input type="hidden" name="id_galeri" value="<?= $galeri['id_galeri'] ?>">
-                            <button type="submit" class="card-galeri ">
-                                <h1 class="text-center pt-3 text-lg"><b><?= $galeri['judul'] ?></b></h1>
-                                <img src="<?= $galeri['img'] ?>" alt="" class="h-40 pt-3 w-[100%]">
-                                <p class="text-justify text-sm pt-3 line-clamp-3"><?= $galeri['deskripsi'] ?></p>
+                            <button type="submit" class="card-galeri flex justify-center flex-col">
+                                <h1 class="text-center pt-3 text-lg line-clamp-1 w-full"><b><?= $galeri['judul'] ?></b></h1>
+                                <img src="<?= $galeri['img'] ?>" alt="" class="h-40 mt-3 w-[100%] mx-auto">
                             </button>
                         </form>
                     <?php

@@ -1,4 +1,4 @@
-    <section id="about-section" class="h-[90vh] bg-gray-900 text-white flex items-center justify-center">
+    <section class="h-[90vh] bg-white text-gray-900 flex items-center justify-center">
         <div class=" w-[90%] space-y-20 md:space-y-0 md:flex md:flex-row-reverse items-center p-1">
             <div data-aos="fade-left" data-aos-duration="1500" class="relative flex w-full md:w-[45%] mx-auto justify-center">
                 <figure class="bg-gradient-to-tl from-orange-500 from-30% to-blue-500 to-70% rounded-full blur-3xl">
@@ -22,7 +22,7 @@
                     </span>
                     <span class="text-orange-600">Inovasi</span>
                 </h4>
-                <div class="my-3 flex justify-center md:justify-start">
+                <div class="my-3 flex justify-center md:justify-start text-white">
                     <div class="flex gap-5">
                         <a class="bg-blue-600 hover:bg-blue-700 rounded-full px-3 p-1 focus:outline-none" href='#about'>
                             Kenali Kami

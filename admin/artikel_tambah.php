@@ -7,13 +7,53 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION[
     exit;
 }
 
+if (isset($_POST['submit'])) {
+    // 1. Data Sanitization and Validation
+    $writer = $_POST['writer'];
+    $judul = htmlspecialchars(trim($_POST['judul']));
+    $penulis = htmlspecialchars(trim($_POST['penulis'])); // Assuming this field is in your database
+    $tag = htmlspecialchars(trim($_POST['tag']));
+    $status = $_POST['status'] === 'publish' ? 'published' : 'unpublished';
+
+    // Handle File Upload
+    $uploadDir =
+        "../public/image/uploads/artikel/"; // Directory to store images
+    $uploadedFile = $_FILES['foto']['tmp_name'];
+    $filename = basename($_FILES['foto']['name']);
+    $targetPath = $uploadDir . $filename;
+
+    if (move_uploaded_file($uploadedFile, $targetPath)) {
+        $imagePath = $targetPath;
+    } else {
+        die("File upload failed.");
+    }
+    $isi = $_POST['isi'];
+    $sql = "INSERT INTO artikel (writer, judul, author, img, content, tag, status) 
+            VALUES (?, ?, ?, ?, ?, ?, ?)";
+    $stmt = $conn->prepare($sql);
+    $stmt->bind_param("sssssss", $writer, $judul, $penulis, $imagePath, $isi, $tag, $status);
+    if ($stmt->execute()) {
+        header("Location: artikel.php");
+        exit();
+    } else {
+        echo "Error: " . $stmt->error;
+    }
+
+    $stmt->close();
+}
+
 $nama = $_SESSION['nama'];
 // Tutup koneksi database
 $conn->close();
 ?>
 
+<!DOCTYPE html>
+<html lang="en">
+
 <head>
-    <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="/node_modules/tinymce/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <main class="flex">
     <aside class="sticky top-0 left-0 w-1/6 h-screen bg-gray-100 shadow-lg">
@@ -40,7 +80,7 @@ $conn->close();
             </button>
         </div>
         <div class="p-4 z-40">
-            <form class="w-[90%] flex z-40 flex-col mx-auto pb-32" action="/himatikadmin/artikel/tambahartikel" method="POST" enctype="multipart/form-data" autocomplete="off">
+            <form class="w-[90%] flex z-40 flex-col mx-auto pb-32" action="" method="POST" enctype="multipart/form-data" autocomplete="off">
                 <div class="">
                     <div class="space-y-6">
                         <input type="hidden" name="writer" id="writer" value="<?php $nama ?>">
@@ -73,7 +113,7 @@ $conn->close();
                         <div class="mx-auto w-[100%]">
                             <label for="isi" class="block text-sm font-medium leading-6 ">Isi</label>
                             <div class="mt-2 z-40">
-                                <textarea id="default">TextArea Error</textarea>
+                                <textarea>TextArea Error</textarea>
                             </div>
                         </div>
                         <div class="flex gap-10">
@@ -99,10 +139,16 @@ $conn->close();
     </section>
 </main>
 
+</html>
+
 <script>
     tinymce.init({
-        selector: 'textarea#default'
+        selector: 'textarea',
+        license_key: 'gpl | 92xg6wlqw9faoyfala0uu4ysc1irr953fn9goktkphy4w1ir',
+        plugins: 'anchor autolink charmap codesample emoticons image link lists media searchreplace table visualblocks wordcount linkchecker',
+        toolbar: 'undo redo | blocks fontfamily fontsize | bold italic underline strikethrough | link image media table | align lineheight | numlist bullist indent outdent | emoticons charmap | removeformat',
     });
+
 
     document.addEventListener('DOMContentLoaded', function() {
         const inputFile = document.getElementById('foto');

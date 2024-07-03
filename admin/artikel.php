@@ -28,20 +28,19 @@ if (!isset($_SESSION['id_user']) || ($_SESSION['role'] !== 'Admin' && $_SESSION[
                 <a href="artikel_tambah.php" class="p-2 bg-blue-600 rounded-lg text-white">Tambah</a>
             </div>
             <?php
-            $dataArtikel = mysqli_query($conn, "SELECT * FROM artikel");
+            $dataArtikel = mysqli_query($conn, "SELECT * FROM artikel ORDER BY id_artikel DESC");
             $jumlahData = mysqli_num_rows($dataArtikel);
 
             if ($jumlahData > 0) {
             ?>
                 <div class="container flex-nowrap w-[90%] gap-5 columns-3 mx-auto grid px-4 lg:grid-cols-12">
                     <?php
-                    // Jika ada data galeri, tampilkan galeri
+                    // Jika ada data artikel, tampilkan artikel
                     while ($artikel = mysqli_fetch_assoc($dataArtikel)) {
                     ?>
-                        <a href="?page=detail_galeri&id_galeri=<?= $artikel['id_galeri'] ?>" class="card-galeri justify-center p-2 text-gray-900 md:col-span-3 lg:col-span-3 rounded-lg bg-gray-400">
-                            <h1 class="text-center pt-3 text-lg"><b><?= $artikel['judul'] ?></b></h1>
-                            <img src="<?= $artikel['img'] ?>" alt="" class="h-40 pt-3 w-[100%]">
-                            <p class="text-justify text-sm pt-3 line-clamp-3"><?= $artikel['deskripsi'] ?></p>
+                        <a href="?page=detail_artikel&id_artikel=<?= $artikel['id_artikel'] ?>" class="card-artikel justify-center p-2 text-gray-900 md:col-span-4 rounded-lg bg-gray-400">
+                            <h1 class="text-center pt-3 text-lg line-clamp-2"><b><?= $artikel['judul'] ?></b></h1>
+                            <p class="text-justify text-sm pt-3 line-clamp-3"><?= $artikel['content'] ?></p>
                         </a>
                     <?php
                     }

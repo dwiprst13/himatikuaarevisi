@@ -12,7 +12,7 @@ $role = $_SESSION['role']; // Mengambil peran dari session
     <script src="https://cdn.tiny.cloud/1/no-api-key/tinymce/7/tinymce.min.js" referrerpolicy="origin"></script>
 </head>
 <aside class="w-full flex flex-col bg-gray-900 text-white h-screen justify-around p-3">
-    <h2 class="text-center text-[1.6rem] font-bold">Himatik Admin</h2>
+    <h2 class="text-center text-[1.4rem] font-bold">Himatik Admin</h2>
     <nav class="flex flex-col gap-5">
         <a class="w-full text-center rounded-lg p-2 <?php echo ($current_page == 'dashboard.php' ? 'bg-blue-600' : 'bg-gray-500'); ?>" href="dashboard.php">Dashboard</a>
         <?php if ($role == 'SuperAdmin' || $role == 'Admin') : ?>

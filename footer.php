@@ -1,5 +1,5 @@
-<footer class="bg-gray-900">
-    <div class="rounded-t-2xl bg-gray-800 md:flex-row p-10 space-y-5">
+<footer class="bg-white">
+    <div class="rounded-t-2xl bg-[#072748] md:flex-row p-10 space-y-5">
         <div id="kiri" class="w-full text-center">
             <h2 class="text-4xl font-bold text-blue-600">HIMATIK UAA</h2>
             <p class="text-white">Jl. Brawijaya No.99, Jadan, Tamantirto, Kec. Kasihan, Kabupaten Bantul, Daerah Istimewa Yogyakarta</p>
@@ -27,7 +27,7 @@
         </div>
     </div>
     <hr class="text-white">
-    <div class="bg-gray-800 text-center p-3">
+    <div class="bg-[#072748] text-center p-3">
         <p class="text-white">Copyright © 2024 Himatik UAA</p>
         <p class="text-white">Tutor ada di kelompok 3 nih bosss!!! || Code available at <a class="text-blue-600" target="_blank" href="https://github.com/dwiprst13/himatikuaarevisi">DwiPrast13's Github</a></p>
     </div>

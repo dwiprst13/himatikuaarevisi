@@ -1,9 +1,10 @@
-<header class="bg-[#072748] sticky top-0 z-50">
+<header class="bg-white sticky top-0 z-50 transition-shadow duration-300 shadow-md">
+    <!-- [#072748] -->
     <div class="flex relative justify-between items-center h-20 w-full md:w-[85%] mx-auto px-5">
         <div class="md:w-1/3 justify-start">
-            <h1><a class="text-white text-2xl font-bold" href="">HIMATIK UAA</a></h1>
+            <h1><a class="text-gray-900 text-2xl font-bold" href="">HIMATIK UAA</a></h1>
         </div>
-        <nav class="w-full md:w-1/3 justify-center nav-links duration-500 bg-[#072748] lg:static absolute lg:min-h-fit min-h-[60vh] left-0 top-[-800%] text-white flex items-center px-5">
+        <nav class="w-full md:w-1/3 justify-center nav-links duration-500 bg-white lg:static absolute lg:min-h-fit min-h-[60vh] left-0 top-[-800%] text-gray-900 font-bold flex items-center px-5">
             <ul class="flex w-[85%] flex-col md:justify-center md:mx-auto lg:flex-row lg:items-center gap-5 my-10 md:my-0">
                 <?php
                 $current_page = basename($_SERVER['PHP_SELF']);
@@ -21,7 +22,7 @@
                 </li>
                 <hr class="block md:hidden">
                 <li>
-                    <a class="hover:text-gray-500 flex md:flex-col justify-between <?= $isCurrentPageGaleri ? 'text-green-600' : '' ?>" href="galeri.php">
+                    <a class="hover:text-gray-500 flex md:flex-col justify-between <?= $isCurrentPageGaleri ? 'text-green-600' : '' ?>" href="/himatikuaa/galeri.php">
                         <p>Galeri</p>
                         <?= $isCurrentPageGaleri ? '<hr class="block h-1 bg-green-600 border-0 rounded">' : '' ?>
                         <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
@@ -29,7 +30,7 @@
                 </li>
                 <hr class="block md:hidden">
                 <li>
-                    <a class="hover:text-gray-500 flex md:flex-col justify-between <?= $isCurrentPageArtikel ? 'text-green-600' : '' ?>" href="artikel.php">
+                    <a class="hover:text-gray-500 flex md:flex-col justify-between <?= $isCurrentPageArtikel ? 'text-green-600' : '' ?>" href="/himatikuaa/artikel.php">
                         <p>Artikel</p>
                         <?= $isCurrentPageArtikel ? '<hr class="block h-1 bg-green-600 border-0 rounded">' : '' ?>
                         <div class="block md:hidden"><i class="fas fa-chevron-right"></i></div>
@@ -42,11 +43,15 @@
             // mengecek apakah ada aktivitas sesi login berdasarkan id_user
             if (!isset($_SESSION['id_user'])) {
             ?>
-                <a class="px-2 p-1 rounded-lg bg-blue-600" href="login.php">Login</a>
-                <a class="px-2 p-1 rounded-lg bg-orange-600" href="register.php">Register</a>
+                <a class="px-2 p-1 rounded-lg bg-blue-600" href="/himatikuaa/login.php">Login</a>
+                <a class="px-2 p-1 rounded-lg bg-orange-600" href="/himatikuaa/register.php">Register</a>
             <?php
             } else { ?>
-                <a class="px-2 p-1 rounded-lg bg-red-600" href="logout.php">logout</a>
+
+                <form action="logout.php" confirm('Apakah kamu yakin ingin menghapus data ini?');" method="POST">
+                    <button class="px-2 p-1 rounded-lg bg-red-600"><?php echo $_SESSION['username']; ?> <i class="fas fa-sign-out-alt" aria-hidden="true"></i>
+                    </button>
+                </form>
             <?php
             }
             ?>

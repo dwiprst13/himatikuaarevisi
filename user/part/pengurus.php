@@ -1,5 +1,5 @@
-    <h3 class="text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] font-bold text-center my-2 md:my-3 bg-gray-900 text-white rounded-xl p-2">Pengurus</h3>
-    <div class="w-[100%] md:w-[90%] mx-auto flex flex-wrap justify-center my-5">
+    <h3 class="w-[100%] md:w-[85%] mx-auto text-[1.2rem] md:text-[1.3rem] lg:text-[1.5rem] font-bold text-center my-2 md:my-3 bg-gray-900 text-white rounded-xl p-2">Pengurus</h3>
+    <div class="w-[100%] md:w-[85%] mx-auto flex flex-wrap justify-center my-5">
         <div class="w-4/12 md:w-[20%] p-2">
             <button id="bphButton" class="default-style w-full focus:outline-none focus:ring focus:ring-transparent rounded-full p-2 text-white" onclick="filterData('BPH', this)">
                 BPH
@@ -37,7 +37,7 @@
         </div>
     </div>
     <div class="w-[90%] md:w-[85%] mx-auto flex flex-wrap justify-center">
-        <div class="relative bg-[#072748] rounded-lg flex p-5 py-8 text-white">
+        <div class="relative bg-[#072748] text-white rounded-lg flex p-5 py-8">
             <div id="tugasContainer" class="">
 
             </div>
@@ -107,8 +107,8 @@
                 posisi: "Sekretaris 2",
                 divisi: "BPH",
                 imgSrc: "public/image/pengurus/Andre.jpg",
-                instagram: "#",
-                linkedin: "#",
+                instagram: "https://www.instagram.com/ndreall__/",
+                linkedin: "https://www.linkedin.com/in/andre-lahandu-9aab71290",
                 github: "#"
             },
             {
@@ -116,35 +116,35 @@
                 posisi: "Bendahara 1",
                 divisi: "BPH",
                 imgSrc: "public/image/pengurus/Octa.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/_oceputt/",
+                linkedin: "https://www.linkedin.com/in/octa-putri-4644192b6/",
+                github: "https://github.com/octaputri123/Octaaa"
             },
             {
                 name: "Vina Salsabila",
                 posisi: "Bendahara 2",
                 divisi: "BPH",
                 imgSrc: "public/image/pengurus/Vina.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/albslsnv/",
                 linkedin: "#",
                 github: "#"
             },
             {
-                name: "Salma Mesias G W K",
+                name: "Salma Mesias GWk",
                 posisi: "Koordinator",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Salma.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "http://instagram.com/salmagesuri",
+                linkedin: "http://linkedin.com/in/salmagesuri",
+                github: "http://github.com/salmaamgwk"
             },
             {
                 name: "Salman Rifki Yanuar",
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Salman.jpg",
-                instagram: "#",
-                linkedin: "#",
+                instagram: "https://www.instagram.com/salman_rifki",
+                linkedin: "https://id.linkedin.com/in/salman-rifki-698976283",
                 github: "#"
             },
             {
@@ -152,8 +152,8 @@
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Sunan.jpg",
-                instagram: "#",
-                linkedin: "#",
+                instagram: "https://www.instagram.com/anannnjack__",
+                linkedin: "https://www.linkedin.com/in/sunanan-al-ulya-35482a283",
                 github: "#"
             },
             {
@@ -161,26 +161,26 @@
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Safiq.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/54feeeq",
+                linkedin: "https://www.linkedin.com/in/ahmad-safiq-381839305/",
+                github: "https://github.com/ahmadsafiqmasrur"
             },
             {
                 name: "Haris Nur Ridlo",
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Haris.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/huuuarisss",
+                linkedin: "https://www.instagram.com/huuuarisss",
+                github: "https://github.com/Ridlonur"
             },
             {
                 name: "Harlin Aprilianto",
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Harlin.jpg",
-                instagram: "#",
-                linkedin: "#",
+                instagram: "https://www.instagram.com/lynoapry",
+                linkedin: "https://www.linkedin.com/in/harlin-aprilianto-9139012b9",
                 github: "#"
             },
             {
@@ -188,17 +188,17 @@
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Fadilah.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/nufa830",
+                linkedin: "https://www.linkedin.com/in/nurulfadilah18/",
+                github: "https://github.com/"
             },
             {
                 name: "Faiz Faturrahman",
                 posisi: "Staff",
                 divisi: "Kominfo",
                 imgSrc: "public/image/pengurus/Faiz.jpg",
-                instagram: "#",
-                linkedin: "#",
+                instagram: "https://www.instagram.com/pxz_04",
+                linkedin: "https://www.linkedin.com/in/faiz-faturrahman-577925305",
                 github: "#"
             },
             {
@@ -206,9 +206,9 @@
                 posisi: "Koordinator",
                 divisi: "Diklat",
                 imgSrc: "public/image/pengurus/Riski.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "http://instagram.com/rskinrhdi",
+                linkedin: "http://linkedin.com/in/riski-nurhadi-166732292/",
+                github: "http://github.com/riskinurhadi"
             },
             {
                 name: "Dwi Prasetia",
@@ -224,34 +224,34 @@
                 posisi: "Staff",
                 divisi: "Diklat",
                 imgSrc: "public/image/pengurus/Farras.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "http://instagram.com/daffayrr",
+                linkedin: "http://linkedin.com/in/daffayrr",
+                github: "http://github.com/daffayrr"
             },
             {
                 name: "Fajar Maulana",
                 posisi: "Staff",
                 divisi: "Diklat",
                 imgSrc: "public/image/pengurus/Fajar.jpg",
-                instagram: "#",
+                instagram: "http://instagram.com/maulana_f4jar",
                 linkedin: "#",
-                github: "#"
+                github: "http://github.com/maulanaa121"
             },
             {
                 name: "Muhammad Khoerul Habibie",
                 posisi: "Staff",
                 divisi: "Diklat",
                 imgSrc: "public/image/pengurus/Habib.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/h2boy7",
+                linkedin: "http://www.linkedin.com/in/muhammadkhoerulhabibi",
+                github: "https://github.com/habiboy7"
             },
             {
                 name: "Nur Fauziatun Nazla",
                 posisi: "Staff",
                 divisi: "Diklat",
                 imgSrc: "public/image/pengurus/Zia.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/im_ziaa15",
                 linkedin: "#",
                 github: "#"
             },
@@ -260,16 +260,16 @@
                 posisi: "Koordinator",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Toro.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/cakturo1/",
+                linkedin: "https://www.linkedin.com/in/trisugiantoro/",
+                github: "https://github.com/cakturo1"
             },
             {
                 name: "Andrian Nur Prima Saputra",
                 posisi: "Staff",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Andrian.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/andriyannps",
                 linkedin: "#",
                 github: "#"
             },
@@ -278,7 +278,7 @@
                 posisi: "Staff",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Jehan.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/seinjee_",
                 linkedin: "#",
                 github: "#"
             },
@@ -287,7 +287,7 @@
                 posisi: "Staff",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Suparman.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/mrsuper_06",
                 linkedin: "#",
                 github: "#"
             },
@@ -296,7 +296,7 @@
                 posisi: "Staff",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Nopal.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/lyzn_design",
                 linkedin: "#",
                 github: "#"
             },
@@ -305,7 +305,7 @@
                 posisi: "Staff",
                 divisi: "PSDA",
                 imgSrc: "public/image/pengurus/Zainal.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/_zaenal",
                 linkedin: "#",
                 github: "#"
             },
@@ -314,7 +314,7 @@
                 posisi: "Koordinator",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Yuan.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/yuanmaulanaa_",
                 linkedin: "#",
                 github: "#"
             },
@@ -323,7 +323,7 @@
                 posisi: "Staff",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Farid.jpg",
-                instagram: "#",
+                instagram: "#https://www.instagram.com/faridpanjsela_",
                 linkedin: "#",
                 github: "#"
             },
@@ -332,7 +332,7 @@
                 posisi: "Staff",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Gilang.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/gilang__wr",
                 linkedin: "#",
                 github: "#"
             },
@@ -341,7 +341,7 @@
                 posisi: "Staff",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Fahrul.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/fhrl_ikhsn",
                 linkedin: "#",
                 github: "#"
             },
@@ -350,7 +350,7 @@
                 posisi: "Staff",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Eksanda.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/naufallvicky/",
                 linkedin: "#",
                 github: "#"
             },
@@ -359,7 +359,7 @@
                 posisi: "Staff",
                 divisi: "Ekonomi",
                 imgSrc: "public/image/pengurus/Alfian.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/alfnovl",
                 linkedin: "#",
                 github: "#"
             },
@@ -368,7 +368,7 @@
                 posisi: "Koordinator",
                 divisi: "Sosmas",
                 imgSrc: "public/image/pengurus/Audi.jpg",
-                instagram: "#",
+                instagram: "",
                 linkedin: "#",
                 github: "#"
             },
@@ -377,7 +377,7 @@
                 posisi: "Staff",
                 divisi: "Sosmas",
                 imgSrc: "public/image/pengurus/Fito.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/deni.alfito",
                 linkedin: "#",
                 github: "#"
             },
@@ -386,7 +386,7 @@
                 posisi: "Staff",
                 divisi: "Sosmas",
                 imgSrc: "public/image/pengurus/Valdi.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/valdii_",
                 linkedin: "#",
                 github: "#"
             },
@@ -395,7 +395,7 @@
                 posisi: "Staff",
                 divisi: "Sosmas",
                 imgSrc: "public/image/pengurus/Yazid.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/yzdsyfrdn",
                 linkedin: "#",
                 github: "#"
             },
@@ -404,7 +404,7 @@
                 posisi: "Staff",
                 divisi: "Sosmas",
                 imgSrc: "public/image/pengurus/Salma23.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/sax.kho",
                 linkedin: "#",
                 github: "#"
             },
@@ -413,16 +413,16 @@
                 posisi: "Koordinator",
                 divisi: "Agama",
                 imgSrc: "public/image/pengurus/Romli.jpg",
-                instagram: "#",
-                linkedin: "#",
-                github: "#"
+                instagram: "https://www.instagram.com/s.romli_",
+                linkedin: "http://www.linkedin.com/in/m-saiful-romli-m-a8ba722b5",
+                github: "http://github.com/xyromli"
             },
             {
                 name: "Afrizal Balya",
                 posisi: "Staff",
                 divisi: "Agama",
                 imgSrc: "public/image/pengurus/Afrizal.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/afrizal_balya",
                 linkedin: "#",
                 github: "#"
             },
@@ -431,7 +431,7 @@
                 posisi: "Staff",
                 divisi: "Agama",
                 imgSrc: "public/image/pengurus/Afif.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/afifsahli_",
                 linkedin: "#",
                 github: "#"
             },
@@ -440,7 +440,7 @@
                 posisi: "Staff",
                 divisi: "Agama",
                 imgSrc: "public/image/pengurus/Deanova.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/deannovaa._",
                 linkedin: "#",
                 github: "#"
             },
@@ -449,11 +449,12 @@
                 posisi: "Staff",
                 divisi: "Agama",
                 imgSrc: "public/image/pengurus/Syahrul.jpg",
-                instagram: "#",
+                instagram: "https://www.instagram.com/syhrlarull",
                 linkedin: "#",
                 github: "#"
             },
         ];
+
 
         const cardContainerPengurus = document.getElementById('card-pengurus');
 

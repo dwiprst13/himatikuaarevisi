@@ -1,0 +1,3 @@
+RewriteEngine On
+RewriteRule ^artikel/([^/]+)/?$ artikel_detail.php?judul=$1 [L]
+

@@ -30,5 +30,19 @@ session_start();
     include "footer.php";
     ?>
 </body>
+<script>
+    window.addEventListener('scroll', function() {
+        const banner = document.getElementById('banner'); // Ganti 'banner' dengan ID elemen banner Anda
+        const header = document.getElementById('header');
+        const bannerHeight = banner.offsetHeight;
+        const scrollPosition = window.scrollY;
+
+        if (scrollPosition >= bannerHeight / 2) {
+            header.classList.add('shadow-lg');
+        } else {
+            header.classList.remove('shadow-lg');
+        }
+    });
+</script>
 
 </html>

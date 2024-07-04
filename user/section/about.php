@@ -11,13 +11,13 @@
                 </figure>
                 <div class="w-full md:w-4/6 text-center py-5 space-y-[1rem]">
                     <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-justify">
-                        <span class="bg-blue-600 text-white p-1 rounded-lg">Kode</span> diartikan sebagai bahasa pemrograman, yang merupakan alat utama dalam pengembangan software, aplikasi dan berbagai solusi berbasis teknologi. penggunaan kata "Kode" menggambarkan fokus organisasi pada bidang pemrograman dan teknologi informatika.
+                        <span class="bg-orange-600 text-white p-1 rounded-lg">Kode</span> diartikan sebagai bahasa pemrograman, yang merupakan alat utama dalam pengembangan software, aplikasi dan berbagai solusi berbasis teknologi. penggunaan kata "Kode" menggambarkan fokus organisasi pada bidang pemrograman dan teknologi informatika.
                     </p>
                     <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-justify">
                         <span class="bg-orange-600 text-white p-1 rounded-lg">Inovasi</span> merupakan konsep kunci yang menunjukkan keinginan untuk menciptakan ide-ide baru, menemukan solusi kreatif, dan terus menerus berinovasi, terutama dalam bidang teknologi dan informatika. Inovasi juga mencerminkan semangat untuk terus terus berkembang dan beradaptasi dengan perubahan zaman serta kebutuhan masyarakat.
                     </p>
                     <p class="text-[1rem] md:text-[1.1rem] lg:text-[1.2rem] text-justify">
-                        <span class="text-white bg-gradient-to-r from-blue-600 from-15% to-orange-600 to-85% p-1 rounded-lg">Kabinet Kode Inovasi</span> bisa diintepretasikan sebagai sebuah tim pengurus dalam himpunan mahasiswa informatika yang befokus pada pengembangan dan penerapan teknologi <span>(Kode)</span> dalam cara cara yang inovatif, menciptakan solusi baru dan memajukan komunitas mereka di bidang informatika dan teknologi, nama ini menegaskan komitmen organisasi terhadap kemajuan teknologi, pembelajaran dan penciptaan dampak positif melalui inovasi.
+                        <span class="text-white bg-blue-600 p-1 rounded-lg">Kabinet Kode Inovasi</span> bisa diintepretasikan sebagai sebuah tim pengurus dalam himpunan mahasiswa informatika yang befokus pada pengembangan dan penerapan teknologi <span>(Kode)</span> dalam cara cara yang inovatif, menciptakan solusi baru dan memajukan komunitas mereka di bidang informatika dan teknologi, nama ini menegaskan komitmen organisasi terhadap kemajuan teknologi, pembelajaran dan penciptaan dampak positif melalui inovasi.
                     </p>
                 </div>
             </div>

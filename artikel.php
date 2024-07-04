@@ -8,7 +8,6 @@ function createSlug($string)
     return $string;
 }
 
-
 ?>
 
 <!DOCTYPE html>
@@ -31,9 +30,9 @@ function createSlug($string)
     // include merupakan sebuah aktivitas untuk menyertakan atau menyisipkan suatu file lain kedalam file tersebut
     include "header.php";
     ?> <main class="bg-white">
-        <div class="flex flex-col space-y-5 py-10">
+        <div class="flex flex-col space-y-5 py-10 w-[90%] mx-auto">
             <h2 class="text-center text-[#072748] text-[2.2rem] font-bold">Artikel</h2>
-            <p class="text-center">Wadah bagi anggota HIMATIK UAA untuk saling berbagi ilmu berkaitan dengan dunia IT</p>
+            <p class="text-center">Selamat datang di artikel Himpunan Mahasiswa Informatika!. Di halaman ini, kami akan membawa Anda dalam perjalanan pengetahuan yang menginspirasi, memberikan wawasan yang tajam terkait teknologi informasi yang dapat membantu Anda melihat berbagai perspektif. Berikut beberapa Tulisan kami yang menginspiratif dan mengedukasi.</p>
             <div class="w-5/6 md:w-1/2 lg:w-1/3 mx-auto my-5">
                 <form action="" method="get" class="flex h-8">
                     <input name="searchPost" type="text" autocomplete="off" placeholder="Cari Postingan..." class="bg-slate-200 text-gray-900 placeholder:text-gray-600 w-[80%] focus:outline-none rounded-l-lg p-2" value="">
@@ -71,7 +70,7 @@ function createSlug($string)
                                             <p class="text-[0.8rem] text-blue-600">Oleh <?= $row_artikel['author'] ?></p>
                                         </div>
                                         <div class="md:flex hidden text-gray-900">
-                                            <p class="text-[1rem] text-justify"><?= substr($row_artikel['content'], 0, 250) . '...' ?></p>
+                                            <p class="text-[1rem] text-justify line-clamp-2"><?= substr($row_artikel['content'], 0, 250) . '...' ?></p>
                                         </div>
                                     </div>
                                 </div>
@@ -83,7 +82,7 @@ function createSlug($string)
                     </a>
                 <?php
                     if ($count < mysqli_num_rows($queryartikel)) { // Tampilkan <hr> jika bukan iterasi terakhir
-                        echo '<hr class="w-[100%] md:w-[85%] mx-auto border-none h-1 bg-gray-900 rounded-full my-2">';
+                        echo '<hr class="w-[100%] md:w-[85%] mx-auto border-none h-1 bg-gray-500 rounded-full my-2">';
                     }
                 }
                 ?>
